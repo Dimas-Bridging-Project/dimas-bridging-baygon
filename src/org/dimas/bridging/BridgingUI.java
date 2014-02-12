@@ -658,6 +658,7 @@ public class BridgingUI extends javax.swing.JFrame {
         jPanel16 = new javax.swing.JPanel();
         jPanel39 = new javax.swing.JPanel();
         btnInputJtpruReload = new javax.swing.JButton();
+        jLabelInputScyllaJTpru = new javax.swing.JLabel();
         jPanel40 = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
         tableInputJtpru = new javax.swing.JTable();
@@ -807,7 +808,7 @@ public class BridgingUI extends javax.swing.JFrame {
         labelProcess1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelProcess1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/dimas/bridging/images/ajax-loader.gif"))); // NOI18N
         jLayeredPane1.add(labelProcess1);
-        labelProcess1.setBounds(0, 0, 50, 70);
+        labelProcess1.setBounds(0, 0, 30, 70);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
@@ -818,6 +819,7 @@ public class BridgingUI extends javax.swing.JFrame {
         btnInputMasterReload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/dimas/bridging/images/sync_16x16.png"))); // NOI18N
         btnInputMasterReload.setText("Reload");
 
+        jLabelInputScyllaMasterProduk.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelInputScyllaMasterProduk.setText("jLabelInputScyllaMasterProduk");
 
         javax.swing.GroupLayout jPanel23Layout = new javax.swing.GroupLayout(jPanel23);
@@ -828,8 +830,8 @@ public class BridgingUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnInputMasterReload, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelInputScyllaMasterProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 239, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jLabelInputScyllaMasterProduk, javax.swing.GroupLayout.PREFERRED_SIZE, 615, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46))
         );
         jPanel23Layout.setVerticalGroup(
             jPanel23Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -863,7 +865,7 @@ public class BridgingUI extends javax.swing.JFrame {
             jPanel24Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel24Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 855, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel24Layout.setVerticalGroup(
@@ -902,6 +904,7 @@ public class BridgingUI extends javax.swing.JFrame {
         btnInputStockReload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/dimas/bridging/images/sync_16x16.png"))); // NOI18N
         btnInputStockReload.setText("Reload");
 
+        jLabelInputScyllaStock.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelInputScyllaStock.setText("jLabelInputScyllaStock");
 
         javax.swing.GroupLayout jPanel25Layout = new javax.swing.GroupLayout(jPanel25);
@@ -912,8 +915,8 @@ public class BridgingUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnInputStockReload, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelInputScyllaStock, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jLabelInputScyllaStock, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         jPanel25Layout.setVerticalGroup(
             jPanel25Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -946,7 +949,7 @@ public class BridgingUI extends javax.swing.JFrame {
             jPanel26Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel26Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 855, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel26Layout.setVerticalGroup(
@@ -985,6 +988,7 @@ public class BridgingUI extends javax.swing.JFrame {
         btnInputOutletReload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/dimas/bridging/images/sync_16x16.png"))); // NOI18N
         btnInputOutletReload.setText("Reload");
 
+        jLabelInputScyllaOutlet.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelInputScyllaOutlet.setText("jLabelInputScyllaOutlet");
 
         javax.swing.GroupLayout jPanel27Layout = new javax.swing.GroupLayout(jPanel27);
@@ -995,8 +999,8 @@ public class BridgingUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnInputOutletReload, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelInputScyllaOutlet, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jLabelInputScyllaOutlet, javax.swing.GroupLayout.PREFERRED_SIZE, 639, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
         );
         jPanel27Layout.setVerticalGroup(
             jPanel27Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1029,7 +1033,7 @@ public class BridgingUI extends javax.swing.JFrame {
             jPanel28Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel28Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 855, Short.MAX_VALUE)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel28Layout.setVerticalGroup(
@@ -1068,6 +1072,7 @@ public class BridgingUI extends javax.swing.JFrame {
         btnInputCvOutletReload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/dimas/bridging/images/sync_16x16.png"))); // NOI18N
         btnInputCvOutletReload.setText("Reload");
 
+        jLabelInputScyllaCvOutlet.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelInputScyllaCvOutlet.setText("jLabelInputScyllaCvOutlet");
 
         javax.swing.GroupLayout jPanel29Layout = new javax.swing.GroupLayout(jPanel29);
@@ -1078,8 +1083,8 @@ public class BridgingUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnInputCvOutletReload, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelInputScyllaCvOutlet, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jLabelInputScyllaCvOutlet, javax.swing.GroupLayout.PREFERRED_SIZE, 631, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(28, 28, 28))
         );
         jPanel29Layout.setVerticalGroup(
             jPanel29Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1112,7 +1117,7 @@ public class BridgingUI extends javax.swing.JFrame {
             jPanel30Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel30Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 855, Short.MAX_VALUE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel30Layout.setVerticalGroup(
@@ -1151,7 +1156,9 @@ public class BridgingUI extends javax.swing.JFrame {
         btnInputSalesmanReload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/dimas/bridging/images/sync_16x16.png"))); // NOI18N
         btnInputSalesmanReload.setText("Reload");
 
+        jLabelInputScyllaSalesman.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelInputScyllaSalesman.setText("jLabelInputScyllaSalesman");
+        jLabelInputScyllaSalesman.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout jPanel31Layout = new javax.swing.GroupLayout(jPanel31);
         jPanel31.setLayout(jPanel31Layout);
@@ -1161,8 +1168,8 @@ public class BridgingUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnInputSalesmanReload, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelInputScyllaSalesman, javax.swing.GroupLayout.PREFERRED_SIZE, 311, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jLabelInputScyllaSalesman, javax.swing.GroupLayout.PREFERRED_SIZE, 612, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         jPanel31Layout.setVerticalGroup(
             jPanel31Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1195,7 +1202,7 @@ public class BridgingUI extends javax.swing.JFrame {
             jPanel32Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel32Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 855, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel32Layout.setVerticalGroup(
@@ -1234,7 +1241,9 @@ public class BridgingUI extends javax.swing.JFrame {
         btnInputJheaderReload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/dimas/bridging/images/sync_16x16.png"))); // NOI18N
         btnInputJheaderReload.setText("Reload");
 
+        jLabelInputScyllaJHeader.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelInputScyllaJHeader.setText("jLabelInputScyllaJHeader");
+        jLabelInputScyllaJHeader.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout jPanel33Layout = new javax.swing.GroupLayout(jPanel33);
         jPanel33.setLayout(jPanel33Layout);
@@ -1243,9 +1252,9 @@ public class BridgingUI extends javax.swing.JFrame {
             .addGroup(jPanel33Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnInputJheaderReload, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelInputScyllaJHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(41, 41, 41)
+                .addComponent(jLabelInputScyllaJHeader, javax.swing.GroupLayout.PREFERRED_SIZE, 635, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel33Layout.setVerticalGroup(
             jPanel33Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1278,7 +1287,7 @@ public class BridgingUI extends javax.swing.JFrame {
             jPanel34Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel34Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 855, Short.MAX_VALUE)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel34Layout.setVerticalGroup(
@@ -1317,6 +1326,7 @@ public class BridgingUI extends javax.swing.JFrame {
         btnInputJpcodeReload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/dimas/bridging/images/sync_16x16.png"))); // NOI18N
         btnInputJpcodeReload.setText("Reload");
 
+        jLabelInputScyllaJPCode.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelInputScyllaJPCode.setText("jLabelInputScyllaJPCode");
 
         javax.swing.GroupLayout jPanel35Layout = new javax.swing.GroupLayout(jPanel35);
@@ -1327,8 +1337,8 @@ public class BridgingUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnInputJpcodeReload, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelInputScyllaJPCode, javax.swing.GroupLayout.PREFERRED_SIZE, 305, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jLabelInputScyllaJPCode, javax.swing.GroupLayout.PREFERRED_SIZE, 629, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
         );
         jPanel35Layout.setVerticalGroup(
             jPanel35Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1361,7 +1371,7 @@ public class BridgingUI extends javax.swing.JFrame {
             jPanel36Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel36Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 855, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel36Layout.setVerticalGroup(
@@ -1400,6 +1410,7 @@ public class BridgingUI extends javax.swing.JFrame {
         btnInputJtprbReload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/dimas/bridging/images/sync_16x16.png"))); // NOI18N
         btnInputJtprbReload.setText("Reload");
 
+        jLabelInputScyllaJTprb.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelInputScyllaJTprb.setText("jLabelInputScyllaJTprb");
 
         javax.swing.GroupLayout jPanel37Layout = new javax.swing.GroupLayout(jPanel37);
@@ -1410,8 +1421,8 @@ public class BridgingUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnInputJtprbReload, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelInputScyllaJTprb, javax.swing.GroupLayout.PREFERRED_SIZE, 266, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jLabelInputScyllaJTprb, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
         jPanel37Layout.setVerticalGroup(
             jPanel37Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1444,7 +1455,7 @@ public class BridgingUI extends javax.swing.JFrame {
             jPanel38Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel38Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 855, Short.MAX_VALUE)
+                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel38Layout.setVerticalGroup(
@@ -1483,6 +1494,9 @@ public class BridgingUI extends javax.swing.JFrame {
         btnInputJtpruReload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/dimas/bridging/images/sync_16x16.png"))); // NOI18N
         btnInputJtpruReload.setText("Reload");
 
+        jLabelInputScyllaJTpru.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelInputScyllaJTpru.setText("jLabelInputScyllaJTpru");
+
         javax.swing.GroupLayout jPanel39Layout = new javax.swing.GroupLayout(jPanel39);
         jPanel39.setLayout(jPanel39Layout);
         jPanel39Layout.setHorizontalGroup(
@@ -1490,13 +1504,17 @@ public class BridgingUI extends javax.swing.JFrame {
             .addGroup(jPanel39Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btnInputJtpruReload, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabelInputScyllaJTpru, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(24, 24, 24))
         );
         jPanel39Layout.setVerticalGroup(
             jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel39Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnInputJtpruReload)
+                .addGroup(jPanel39Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabelInputScyllaJTpru)
+                    .addComponent(btnInputJtpruReload))
                 .addContainerGap(18, Short.MAX_VALUE))
         );
 
@@ -1521,7 +1539,7 @@ public class BridgingUI extends javax.swing.JFrame {
             jPanel40Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel40Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 863, Short.MAX_VALUE)
+                .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 820, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel40Layout.setVerticalGroup(
@@ -2427,7 +2445,7 @@ public class BridgingUI extends javax.swing.JFrame {
                         .addComponent(jPanel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel58, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel55, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -2453,7 +2471,9 @@ public class BridgingUI extends javax.swing.JFrame {
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 880, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 17, Short.MAX_VALUE))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2469,7 +2489,8 @@ public class BridgingUI extends javax.swing.JFrame {
         btnOutputSalesReload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/dimas/bridging/images/sync_16x16.png"))); // NOI18N
         btnOutputSalesReload.setText("Reload");
 
-        jLabelOutputSales.setText("jLabel29");
+        jLabelOutputSales.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelOutputSales.setText("jLabelOutputSales");
 
         javax.swing.GroupLayout jPanel44Layout = new javax.swing.GroupLayout(jPanel44);
         jPanel44.setLayout(jPanel44Layout);
@@ -2479,8 +2500,8 @@ public class BridgingUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnOutputSalesReload, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelOutputSales, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jLabelOutputSales, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26))
         );
         jPanel44Layout.setVerticalGroup(
             jPanel44Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2552,7 +2573,8 @@ public class BridgingUI extends javax.swing.JFrame {
         btnOutputStockReload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/dimas/bridging/images/sync_16x16.png"))); // NOI18N
         btnOutputStockReload.setText("Reload");
 
-        jLabelOutputStock.setText("jLabel29");
+        jLabelOutputStock.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelOutputStock.setText("jLabelOutputStock");
 
         javax.swing.GroupLayout jPanel46Layout = new javax.swing.GroupLayout(jPanel46);
         jPanel46.setLayout(jPanel46Layout);
@@ -2562,8 +2584,8 @@ public class BridgingUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnOutputStockReload, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelOutputStock, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jLabelOutputStock, javax.swing.GroupLayout.PREFERRED_SIZE, 642, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
         jPanel46Layout.setVerticalGroup(
             jPanel46Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2635,7 +2657,8 @@ public class BridgingUI extends javax.swing.JFrame {
         btnOutputClientReload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/dimas/bridging/images/sync_16x16.png"))); // NOI18N
         btnOutputClientReload.setText("Reload");
 
-        jLabelOutputClient.setText("jLabel29");
+        jLabelOutputClient.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelOutputClient.setText("jLabelOutputClient");
 
         javax.swing.GroupLayout jPanel48Layout = new javax.swing.GroupLayout(jPanel48);
         jPanel48.setLayout(jPanel48Layout);
@@ -2645,8 +2668,8 @@ public class BridgingUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnOutputClientReload, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelOutputClient, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jLabelOutputClient, javax.swing.GroupLayout.PREFERRED_SIZE, 625, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
         jPanel48Layout.setVerticalGroup(
             jPanel48Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2718,7 +2741,8 @@ public class BridgingUI extends javax.swing.JFrame {
         btnOutputSalesOrderReload.setIcon(new javax.swing.ImageIcon(getClass().getResource("/org/dimas/bridging/images/sync_16x16.png"))); // NOI18N
         btnOutputSalesOrderReload.setText("Reload");
 
-        jLabelOutputSalesOrder.setText("jLabel29");
+        jLabelOutputSalesOrder.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelOutputSalesOrder.setText("jLabelOutputSalesOrder");
 
         javax.swing.GroupLayout jPanel50Layout = new javax.swing.GroupLayout(jPanel50);
         jPanel50.setLayout(jPanel50Layout);
@@ -2728,8 +2752,8 @@ public class BridgingUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(btnOutputSalesOrderReload, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabelOutputSalesOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(jLabelOutputSalesOrder, javax.swing.GroupLayout.PREFERRED_SIZE, 648, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23))
         );
         jPanel50Layout.setVerticalGroup(
             jPanel50Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -3673,6 +3697,42 @@ public class BridgingUI extends javax.swing.JFrame {
         return jLabelOutputStock;
     }
 
+    public JLabel getjLabelInputScyllaCvOutlet() {
+        return jLabelInputScyllaCvOutlet;
+    }
+
+    public JLabel getjLabelInputScyllaJHeader() {
+        return jLabelInputScyllaJHeader;
+    }
+
+    public JLabel getjLabelInputScyllaJPCode() {
+        return jLabelInputScyllaJPCode;
+    }
+
+    public JLabel getjLabelInputScyllaJTprb() {
+        return jLabelInputScyllaJTprb;
+    }
+
+    public JLabel getjLabelInputScyllaJTpru() {
+        return jLabelInputScyllaJTpru;
+    }
+
+    public JLabel getjLabelInputScyllaMasterProduk() {
+        return jLabelInputScyllaMasterProduk;
+    }
+
+    public JLabel getjLabelInputScyllaOutlet() {
+        return jLabelInputScyllaOutlet;
+    }
+
+    public JLabel getjLabelInputScyllaSalesman() {
+        return jLabelInputScyllaSalesman;
+    }
+
+    public JLabel getjLabelInputScyllaStock() {
+        return jLabelInputScyllaStock;
+    }
+
  
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -3760,6 +3820,7 @@ public class BridgingUI extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelInputScyllaJHeader;
     private javax.swing.JLabel jLabelInputScyllaJPCode;
     private javax.swing.JLabel jLabelInputScyllaJTprb;
+    private javax.swing.JLabel jLabelInputScyllaJTpru;
     private javax.swing.JLabel jLabelInputScyllaMasterProduk;
     private javax.swing.JLabel jLabelInputScyllaOutlet;
     private javax.swing.JLabel jLabelInputScyllaSalesman;

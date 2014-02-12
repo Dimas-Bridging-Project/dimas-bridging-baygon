@@ -8,11 +8,13 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dialog;
 import java.io.File;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.text.NumberFormatter;
 import org.config.spring.hibernate.model.CvOutlet;
 import org.config.spring.hibernate.model.JHeader;
 import org.config.spring.hibernate.model.JPcode;
@@ -342,12 +344,17 @@ public class BridgingApp extends BridgingDefault {
            }
            */
            
+            String message = "CvOutlet: ";
+            int jmlRecordSuccess = 0;
+            int jmlRecordFail = 0;
+            int jmlTotal1 = 0;
+            int jmlTotal2 = 0;
             
-            
-            getTextPathInputCvOutlet().setBackground(Color.YELLOW);    
+            getTextPathInputCvOutlet().setBackground(Color.YELLOW);
             ParseCvOutlet parse = new ParseCvOutlet();
             List<CvOutlet> lst = new ArrayList<>();
             lst = parse.parseCvOutlet(getTextPathInputCvOutlet().getText());
+            
             for (CvOutlet itm: lst) {
                 try {
                     if (databaseMode==true){
@@ -355,12 +362,14 @@ public class BridgingApp extends BridgingDefault {
                     } else {
                         cvOutletDaoMem.saveOrUpdate(itm);
                     }
-                    
-                    
-                    
-                } catch (Exception ex){}
+                    jmlRecordSuccess+=1;
+                } catch (Exception ex){
+                    jmlRecordFail+=1;
+                }
             }
             aksiBtnInputCvOutletReload();
+            message = message + "Jml Rec Success: " + Integer.toString(jmlRecordSuccess) + ", Fail: " + Integer.toString(jmlRecordFail);
+            getjLabelInputScyllaCvOutlet().setText(message);
             
             //Indikator jika berhasil atau gagal     
             if (tmCvOutlet.getRowCount() > 0) {
@@ -387,8 +396,16 @@ public class BridgingApp extends BridgingDefault {
             if (! getTextPathInputJHeader().getText().trim().equals("")) {
                  getTextPathInputJHeader().setBackground(Color.YELLOW);    
 
+                String message = "JHeader: ";
+                int jmlRecordSuccess = 0;
+                int jmlRecordFail = 0;
+                int jmlTotal1Success = 0;
+                int jmlTotal1Fail = 0;
+                int jmlTotal2Success = 0;
+                int jmlTotal2Fail = 0;
+
                 //Untuk mode Database Memory
-                List<MapTipeOutlet> lstMap = mapTipeOutletDao.findAll();                
+                List<MapTipeOutlet> lstMap = mapTipeOutletDao.findAll();    
                 for (MapTipeOutlet itmMap: lstMap) {
                     //System.out.println("Tipe Outlet : " + itmMap.getTipeOutlet());
                     try {
@@ -399,9 +416,7 @@ public class BridgingApp extends BridgingDefault {
                 ParseJHeader parse = new ParseJHeader();
                 List<JHeader> lst = new ArrayList<>();
                 lst = parse.parseJHeader(getTextPathInputJHeader().getText());
-                
-                System.out.println("Test JHeader: " + lst.size());
-                
+
                 int hitungJumlah = 0;
                 for (JHeader itm: lst) {
                     try {
@@ -415,13 +430,25 @@ public class BridgingApp extends BridgingDefault {
                             
                             hitungJumlah++;
                         }
+                        jmlRecordSuccess+=1;
+                        jmlTotal1Success += itm.getNetPpn();
                     } catch(Exception ex) {
-                        System.out.println("Test JHeader Gagal: " + itm);
+                        jmlRecordFail+=1;
+                        jmlTotal1Fail += itm.getNetPpn();                        
+                        //System.out.println("Test JHeader Gagal: " + itm);
                     }
                 }
                 aksiBtnInputJheaderReload();
                 
-                System.out.println(" Jumlah Jheader yang berhasil masuk : " + jheaderDaoMem.findAll().size() + " dari " + hitungJumlah);
+                NumberFormat nf = NumberFormat.getNumberInstance();
+                nf.setMinimumFractionDigits(0); //jumlah pecahan dibelakang koma
+                nf.setMaximumFractionDigits(0); //jumlah pecahan dibelakang koma
+                message = message + "Jml Rec Success: " + Integer.toString(jmlRecordSuccess) + ", Fail: " + Integer.toString(jmlRecordFail) + 
+                        ",  Net+Ppn Success: " + String.valueOf(nf.format(jmlTotal1Success)) + 
+                        " and Fail: " + String.valueOf(nf.format(jmlTotal1Fail) );          
+                getjLabelInputScyllaJHeader().setText(message);
+                
+                //System.out.println(" Jumlah Jheader yang berhasil masuk : " + jheaderDaoMem.findAll().size() + " dari " + hitungJumlah);
                 
                 //Indikator jika berhasil atau gagal     
                  if (tmJHeader.getRowCount() > 0) {
@@ -449,7 +476,15 @@ public class BridgingApp extends BridgingDefault {
     @Override
     public void aksiBtnRetrieveInputJPcode() {
         if (! getTextPathInputJPcode().getText().trim().equals("")) {
-             getTextPathInputJPcode().setBackground(Color.YELLOW);    
+             getTextPathInputJPcode().setBackground(Color.YELLOW);
+             
+            String message = "JPCode: ";
+            int jmlRecordSuccess = 0;
+            int jmlRecordFail = 0;
+            int jmlTotal1Success = 0;
+            int jmlTotal1Fail = 0;
+            int jmlTotal2Success = 0;
+            int jmlTotal2Fail = 0;
 
              ParseJPcode parse = new ParseJPcode();
              List<JPcode> lst = new ArrayList<>();
@@ -464,11 +499,24 @@ public class BridgingApp extends BridgingDefault {
                         jpcodeDaoMem.saveOrUpdate(itm);
                         hitungMasuk++;
                     }
-                } catch (Exception ex){}
+                    jmlRecordSuccess+=1;
+                    jmlTotal1Success += itm.getHargaNoPpn();
+                    
+                } catch (Exception ex){
+                    jmlRecordFail+=1;
+                    jmlTotal1Fail += itm.getHargaNoPpn();                        
+                }
             }
-            aksiBtnInputJpcodeReload();
+                aksiBtnInputJpcodeReload();
             
-            System.out.println("Jumlah ambil dari Dao : " + jpcodeDaoMem.findAll().size() + " dari : " + hitungMasuk);
+                NumberFormat nf = NumberFormat.getNumberInstance();
+                nf.setMinimumFractionDigits(0); //jumlah pecahan dibelakang koma
+                nf.setMaximumFractionDigits(0); //jumlah pecahan dibelakang koma
+                message = message + "Jml Rec Success: " + Integer.toString(jmlRecordSuccess) + ", Fail: " + Integer.toString(jmlRecordFail) + 
+                        ",  HargaNoPPn Success: " + String.valueOf(nf.format(jmlTotal1Success)) + 
+                        " and Fail: " + String.valueOf(nf.format(jmlTotal1Fail) );          
+                getjLabelInputScyllaJPCode().setText(message);
+//            System.out.println("Jumlah ambil dari Dao : " + jpcodeDaoMem.findAll().size() + " dari : " + hitungMasuk);
             
              //Indikator jika berhasil atau gagal     
              if (tmJPcode.getRowCount() > 0) {
@@ -485,12 +533,20 @@ public class BridgingApp extends BridgingDefault {
      public void aksiBtnRetrieveInputJTprb() {
        if (! getTextPathInputJTprb().getText().trim().equals("")) {
             getTextPathInputJTprb().setBackground(Color.YELLOW);    
+  
+            String message = "JTprb: ";
+            int jmlRecordSuccess = 0;
+            int jmlRecordFail = 0;
+            int jmlTotal1Success = 0;
+            int jmlTotal1Fail = 0;
+            int jmlTotal2Success = 0;
+            int jmlTotal2Fail = 0;
 
             ParseJTprb parse = new ParseJTprb();
             List<JTprb> lst = new ArrayList<>();
             lst = parse.parseJTprb(getTextPathInputJTprb().getText());
 
-            System.out.println("Test JTPRB: " + lst.size());
+            //System.out.println("Test JTPRB: " + lst.size());
                     
             Integer jmlMasuk = 0;
             for (JTprb itm: lst) {
@@ -503,13 +559,27 @@ public class BridgingApp extends BridgingDefault {
                         jtprbDaoMem.saveOrUpdate(itm);
                     }
                     jmlMasuk++;
-                }catch (Exception ex) {
-                    System.err.println("Test JTPRB: " + itm.toString());
-                }
+                    
+                    jmlRecordSuccess+=1;
+                    jmlTotal1Success += itm.getHargaNoPpn();
+                    
+                } catch (Exception ex){
+                    jmlRecordFail+=1;
+                    jmlTotal1Fail += itm.getHargaNoPpn(); 
+                }    
             }
-            System.out.println("Test JTPRB: " + jmlMasuk);
+//            System.out.println("Test JTPRB: " + jmlMasuk);
             
-            aksiBtnInputJtprbReload();
+                aksiBtnInputJtprbReload();
+            
+                NumberFormat nf = NumberFormat.getNumberInstance();
+                nf.setMinimumFractionDigits(0); //jumlah pecahan dibelakang koma
+                nf.setMaximumFractionDigits(0); //jumlah pecahan dibelakang koma
+                message = message + "Jml Rec Success: " + Integer.toString(jmlRecordSuccess) + ", Fail: " + Integer.toString(jmlRecordFail) + 
+                        ",  HargaNoPPn Success: " + String.valueOf(nf.format(jmlTotal1Success)) + 
+                        " and Fail: " + String.valueOf(nf.format(jmlTotal1Fail) );          
+                getjLabelInputScyllaJTprb().setText(message);
+            
             //Indikator jika berhasil atau gagal     
             if (tmJTprb.getRowCount() > 0) {
                 getTextPathInputJTprb().setBackground(Color.GREEN);
@@ -526,6 +596,14 @@ public class BridgingApp extends BridgingDefault {
         if (! getTextPathInputJTpru().getText().trim().equals("")) {
             getTextPathInputJTpru().setBackground(Color.YELLOW);    
 
+            String message = "JTpru: ";
+            int jmlRecordSuccess = 0;
+            int jmlRecordFail = 0;
+            int jmlTotal1Success = 0;
+            int jmlTotal1Fail = 0;
+            int jmlTotal2Success = 0;
+            int jmlTotal2Fail = 0;
+
             ParseJTpru parse = new ParseJTpru();
             List<JTpru> lst = new ArrayList<>();
             lst = parse.parseJTpru(getTextPathInputJTpru().getText());
@@ -536,9 +614,24 @@ public class BridgingApp extends BridgingDefault {
                     } else {
                         jtpruDaoMem.saveOrUpdate(itm);
                     }
-                } catch(Exception ex) {}
+                    jmlRecordSuccess+=1;
+                    jmlTotal1Success += itm.getHargaNoPpn();
+                    
+                } catch (Exception ex){
+                    jmlRecordFail+=1;
+                    jmlTotal1Fail += itm.getHargaNoPpn();                        
+
+                }
             }
             aksiBtnInputJtpruReload();
+            
+                NumberFormat nf = NumberFormat.getNumberInstance();
+                nf.setMinimumFractionDigits(0); //jumlah pecahan dibelakang koma
+                nf.setMaximumFractionDigits(0); //jumlah pecahan dibelakang koma
+                message = message + "Jml Rec Success: " + Integer.toString(jmlRecordSuccess) + ", Fail: " + Integer.toString(jmlRecordFail) + 
+                        ",  HargaNoPPn Success: " + String.valueOf(nf.format(jmlTotal1Success)) + 
+                        " and Fail: " + String.valueOf(nf.format(jmlTotal1Fail) );          
+                getjLabelInputScyllaJTpru().setText(message);
              
             //Indikator jika berhasil atau gagal     
             if (tmJTpru.getRowCount() > 0) {
@@ -555,6 +648,14 @@ public class BridgingApp extends BridgingDefault {
        if (! getTextPathInputMaster().getText().trim().equals("")) {
             getTextPathInputMaster().setBackground(Color.YELLOW);    
 
+            String message = "Produk: ";
+            int jmlRecordSuccess = 0;
+            int jmlRecordFail = 0;
+            int jmlTotal1Success = 0;
+            int jmlTotal1Fail = 0;
+            int jmlTotal2Success = 0;
+            int jmlTotal2Fail = 0;
+
             ParseMSPCODE parse = new ParseMSPCODE();
             List<Produk> lst = new ArrayList<>();
             lst = parse.parseMSPCODE(getTextPathInputMaster().getText());
@@ -565,10 +666,21 @@ public class BridgingApp extends BridgingDefault {
                          }else {
                              produkDaoMem.saveOrUpdate(itm);
                          }
-                     }catch(Exception ex) {}
+                        jmlRecordSuccess+=1;
+//                      jmlTotal1Success += itm.getHargaNoPpn();
+                    
+                      } catch (Exception ex){
+                        jmlRecordFail+=1;
+  //                    jmlTotal1Fail += itm.getHargaNoPpn();                                             
+                     }
                              
                  }
                  aksiBtnInputMasterReload();
+                NumberFormat nf = NumberFormat.getNumberInstance();
+                nf.setMinimumFractionDigits(0); //jumlah pecahan dibelakang koma
+                nf.setMaximumFractionDigits(0); //jumlah pecahan dibelakang koma
+                message = message + "Jml Rec Success: " + Integer.toString(jmlRecordSuccess) + ", Fail: " + Integer.toString(jmlRecordFail);          
+                getjLabelInputScyllaMasterProduk().setText(message);
             
             //Indikator jika berhasil atau gagal     
             if (tmProduk.getRowCount() > 0) {
@@ -586,6 +698,14 @@ public class BridgingApp extends BridgingDefault {
      public void aksiBtnRetrieveInputOutlet() {
        if (! getTextPathInputOutlet().getText().trim().equals("")) {
             getTextPathInputOutlet().setBackground(Color.YELLOW);    
+
+            String message = "Produk: ";
+            int jmlRecordSuccess = 0;
+            int jmlRecordFail = 0;
+            int jmlTotal1Success = 0;
+            int jmlTotal1Fail = 0;
+            int jmlTotal2Success = 0;
+            int jmlTotal2Fail = 0;
             
             ParseOutlet parse = new ParseOutlet();
             List<Outlet> lst = new ArrayList<>();
@@ -598,10 +718,21 @@ public class BridgingApp extends BridgingDefault {
                     } else {
                         outletDaoMem.saveOrUpdate(itm);
                     }
-                } catch(Exception ex) {}
+                    jmlRecordSuccess+=1;
+//                      jmlTotal1Success += itm.getHargaNoPpn();
+
+                 } catch (Exception ex){
+                    jmlRecordFail+=1;
+//                    jmlTotal1Fail += itm.getHargaNoPpn();                                                              
+                }
             }
             aksiBtnInputOutletReload();
             //Indikator jika berhasil atau gagal     
+                NumberFormat nf = NumberFormat.getNumberInstance();
+                nf.setMinimumFractionDigits(0); //jumlah pecahan dibelakang koma
+                nf.setMaximumFractionDigits(0); //jumlah pecahan dibelakang koma
+                message = message + "Jml Rec Success: " + Integer.toString(jmlRecordSuccess) + ", Fail: " + Integer.toString(jmlRecordFail);          
+                getjLabelInputScyllaOutlet().setText(message);
             
             if (tmOutlet.getRowCount() > 0) {
                 getTextPathInputOutlet().setBackground(Color.GREEN);
@@ -618,6 +749,14 @@ public class BridgingApp extends BridgingDefault {
     public void aksiBtnRetrieveInputStock() {
        if (! getTextPathInputStock().getText().trim().equals("")) {
             getTextPathInputStock().setBackground(Color.YELLOW);    
+
+            String message = "Produk: ";
+            int jmlRecordSuccess = 0;
+            int jmlRecordFail = 0;
+            int jmlTotal1Success = 0;
+            int jmlTotal1Fail = 0;
+            int jmlTotal2Success = 0;
+            int jmlTotal2Fail = 0;
             
             ParseStock parse = new ParseStock();
             List<Stock> lst = new ArrayList<>();
@@ -629,11 +768,26 @@ public class BridgingApp extends BridgingDefault {
                     } else {
                         stockDaoMem.saveOrUpdate(itm);
                     }
-                } catch (Exception ex){}
+                    jmlRecordSuccess+=1;
+                    jmlTotal1Success += itm.getHargaBeli();
+                 } catch (Exception ex){
+                    jmlRecordFail+=1;
+                    jmlTotal1Fail += itm.getHargaBeli();                                                              
+                
+                }
             }
             aksiBtnInputStockReload();
             
             //Indikator jika berhasil atau gagal     
+                NumberFormat nf = NumberFormat.getNumberInstance();
+                nf.setMinimumFractionDigits(0); //jumlah pecahan dibelakang koma
+                nf.setMaximumFractionDigits(0); //jumlah pecahan dibelakang koma
+                message = message + "Jml Rec Success: " + Integer.toString(jmlRecordSuccess) + ", Fail: " + Integer.toString(jmlRecordFail) + 
+                        ",  HargaBeli Success: " + String.valueOf(nf.format(jmlTotal1Success)) + 
+                        " and Fail: " + String.valueOf(nf.format(jmlTotal1Fail) );          
+                getjLabelInputScyllaStock().setText(message);
+            
+            
             if (tmStock.getRowCount() > 0) {
                 getTextPathInputStock().setBackground(Color.GREEN);
             } else {
@@ -646,6 +800,14 @@ public class BridgingApp extends BridgingDefault {
     public void aksiBtnRetrieveInputSalesman() {
        if (! getTextPathInputSalesman() .getText().trim().equals("")) {
             getTextPathInputSalesman().setBackground(Color.YELLOW);    
+
+            String message = "Salesman: ";
+            int jmlRecordSuccess = 0;
+            int jmlRecordFail = 0;
+            int jmlTotal1Success = 0;
+            int jmlTotal1Fail = 0;
+            int jmlTotal2Success = 0;
+            int jmlTotal2Fail = 0;
             
             ParseSalesman parse = new ParseSalesman();
             List<Salesman> lst = new ArrayList<>();
@@ -657,11 +819,24 @@ public class BridgingApp extends BridgingDefault {
                     } else {
                         salesmanDaoMem.saveOrUpdate(itm);
                     }
-                } catch (Exception ex) {}
+                    jmlRecordSuccess+=1;
+//                      jmlTotal1Success += itm.getHargaNoPpn();
+
+                 } catch (Exception ex){
+                    jmlRecordFail+=1;
+//                    jmlTotal1Fail += itm.getHargaNoPpn();                                                              
+                
+                }
             }
             aksiBtnInputSalesmanReload();
             
             //Indikator jika berhasil atau gagal     
+               NumberFormat nf = NumberFormat.getNumberInstance();
+                nf.setMinimumFractionDigits(0); //jumlah pecahan dibelakang koma
+                nf.setMaximumFractionDigits(0); //jumlah pecahan dibelakang koma
+                message = message + "Jml Rec Success: " + Integer.toString(jmlRecordSuccess) + ", Fail: " + Integer.toString(jmlRecordFail);          
+                getjLabelInputScyllaSalesman().setText(message);
+             
             if (tmSalesman.getRowCount() > 0) {
                 getTextPathInputSalesman().setBackground(Color.GREEN);
             } else {

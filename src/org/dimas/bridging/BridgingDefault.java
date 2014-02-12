@@ -181,19 +181,32 @@ public class BridgingDefault  extends BridgingUI implements ActionListener {
         aksiBtnPathInputReloadAll();
         
         getTableInputCvOutlet().setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        getTableInputCvOutlet().setAutoCreateRowSorter(true);
         getTableInputJheader().setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        getTableInputJheader().setAutoCreateRowSorter(true);
         getTableInputJpcode().setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        getTableInputJpcode().setAutoCreateRowSorter(true);
         getTableInputJtprb().setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        getTableInputJtprb().setAutoCreateRowSorter(true);
         getTableInputJtpru().setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        getTableInputJtpru().setAutoCreateRowSorter(true);
         getTableInputMaster().setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        getTableInputMaster().setAutoCreateRowSorter(true);
         getTableInputOutlet().setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        getTableInputOutlet().setAutoCreateRowSorter(true);
         getTableInputSalesman().setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        getTableInputSalesman().setAutoCreateRowSorter(true);
         getTableInputStock().setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        getTableInputStock().setAutoCreateRowSorter(true);
         
         getTableOutputClient().setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        getTableOutputClient().setAutoCreateRowSorter(true);
         getTableOutputSales().setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        getTableOutputSales().setAutoCreateRowSorter(true);
         getTableOutputSalesOrder().setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        getTableOutputSalesOrder().setAutoCreateRowSorter(true);
         getTableOutputStock().setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        getTableOutputStock().setAutoCreateRowSorter(true);
         
     }
      private void initActionAdditionalDefa(){

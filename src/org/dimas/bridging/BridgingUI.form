@@ -51,7 +51,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="50" height="70"/>
+              <AbsoluteConstraints x="0" y="0" width="30" height="70"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -104,7 +104,10 @@
                   <Layout>
                     <DimensionLayout dim="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jTabbedPane1" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="jTabbedPane1" min="-2" pref="880" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="17" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
@@ -175,8 +178,8 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="btnInputMasterReload" min="-2" pref="132" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabelInputScyllaMasterProduk" min="-2" pref="239" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabelInputScyllaMasterProduk" min="-2" pref="615" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -204,6 +207,7 @@
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabelInputScyllaMasterProduk">
                                   <Properties>
+                                    <Property name="horizontalAlignment" type="int" value="4"/>
                                     <Property name="text" type="java.lang.String" value="jLabelInputScyllaMasterProduk"/>
                                   </Properties>
                                 </Component>
@@ -223,7 +227,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jScrollPane1" pref="855" max="32767" attributes="0"/>
+                                          <Component id="jScrollPane1" pref="820" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -316,8 +320,8 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="btnInputStockReload" min="-2" pref="132" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabelInputScyllaStock" min="-2" pref="280" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabelInputScyllaStock" min="-2" pref="644" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -345,6 +349,7 @@
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabelInputScyllaStock">
                                   <Properties>
+                                    <Property name="horizontalAlignment" type="int" value="4"/>
                                     <Property name="text" type="java.lang.String" value="jLabelInputScyllaStock"/>
                                   </Properties>
                                 </Component>
@@ -364,7 +369,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jScrollPane2" pref="855" max="32767" attributes="0"/>
+                                          <Component id="jScrollPane2" pref="820" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -456,8 +461,8 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="btnInputOutletReload" min="-2" pref="132" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabelInputScyllaOutlet" min="-2" pref="270" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabelInputScyllaOutlet" min="-2" pref="639" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -485,6 +490,7 @@
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabelInputScyllaOutlet">
                                   <Properties>
+                                    <Property name="horizontalAlignment" type="int" value="4"/>
                                     <Property name="text" type="java.lang.String" value="jLabelInputScyllaOutlet"/>
                                   </Properties>
                                 </Component>
@@ -504,7 +510,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jScrollPane3" pref="855" max="32767" attributes="0"/>
+                                          <Component id="jScrollPane3" pref="820" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -596,8 +602,8 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="btnInputCvOutletReload" min="-2" pref="132" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabelInputScyllaCvOutlet" min="-2" pref="323" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabelInputScyllaCvOutlet" min="-2" pref="631" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -625,6 +631,7 @@
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabelInputScyllaCvOutlet">
                                   <Properties>
+                                    <Property name="horizontalAlignment" type="int" value="4"/>
                                     <Property name="text" type="java.lang.String" value="jLabelInputScyllaCvOutlet"/>
                                   </Properties>
                                 </Component>
@@ -644,7 +651,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jScrollPane4" pref="855" max="32767" attributes="0"/>
+                                          <Component id="jScrollPane4" pref="820" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -736,8 +743,8 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="btnInputSalesmanReload" min="-2" pref="132" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabelInputScyllaSalesman" min="-2" pref="311" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabelInputScyllaSalesman" min="-2" pref="612" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -765,7 +772,9 @@
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabelInputScyllaSalesman">
                                   <Properties>
+                                    <Property name="horizontalAlignment" type="int" value="4"/>
                                     <Property name="text" type="java.lang.String" value="jLabelInputScyllaSalesman"/>
+                                    <Property name="horizontalTextPosition" type="int" value="4"/>
                                   </Properties>
                                 </Component>
                               </SubComponents>
@@ -784,7 +793,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jScrollPane5" pref="855" max="32767" attributes="0"/>
+                                          <Component id="jScrollPane5" pref="820" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -875,9 +884,9 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="btnInputJheaderReload" min="-2" pref="132" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                          <Component id="jLabelInputScyllaJHeader" min="-2" pref="635" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabelInputScyllaJHeader" min="-2" pref="322" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -905,7 +914,9 @@
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabelInputScyllaJHeader">
                                   <Properties>
+                                    <Property name="horizontalAlignment" type="int" value="4"/>
                                     <Property name="text" type="java.lang.String" value="jLabelInputScyllaJHeader"/>
+                                    <Property name="horizontalTextPosition" type="int" value="4"/>
                                   </Properties>
                                 </Component>
                               </SubComponents>
@@ -924,7 +935,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jScrollPane6" pref="855" max="32767" attributes="0"/>
+                                          <Component id="jScrollPane6" pref="820" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -1016,8 +1027,8 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="btnInputJpcodeReload" min="-2" pref="132" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabelInputScyllaJPCode" min="-2" pref="305" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabelInputScyllaJPCode" min="-2" pref="629" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1045,6 +1056,7 @@
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabelInputScyllaJPCode">
                                   <Properties>
+                                    <Property name="horizontalAlignment" type="int" value="4"/>
                                     <Property name="text" type="java.lang.String" value="jLabelInputScyllaJPCode"/>
                                   </Properties>
                                 </Component>
@@ -1064,7 +1076,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jScrollPane7" pref="855" max="32767" attributes="0"/>
+                                          <Component id="jScrollPane7" pref="820" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -1156,8 +1168,8 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="btnInputJtprbReload" min="-2" pref="132" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabelInputScyllaJTprb" min="-2" pref="266" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabelInputScyllaJTprb" min="-2" pref="642" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1185,6 +1197,7 @@
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabelInputScyllaJTprb">
                                   <Properties>
+                                    <Property name="horizontalAlignment" type="int" value="4"/>
                                     <Property name="text" type="java.lang.String" value="jLabelInputScyllaJTprb"/>
                                   </Properties>
                                 </Component>
@@ -1204,7 +1217,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jScrollPane8" pref="855" max="32767" attributes="0"/>
+                                          <Component id="jScrollPane8" pref="820" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -1296,6 +1309,8 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="btnInputJtpruReload" min="-2" pref="132" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="jLabelInputScyllaJTpru" min="-2" pref="606" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1303,7 +1318,10 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnInputJtpruReload" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabelInputScyllaJTpru" min="-2" max="-2" attributes="0"/>
+                                              <Component id="btnInputJtpruReload" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                           <EmptySpace pref="18" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -1316,6 +1334,12 @@
                                       <Image iconType="3" name="/org/dimas/bridging/images/sync_16x16.png"/>
                                     </Property>
                                     <Property name="text" type="java.lang.String" value="Reload"/>
+                                  </Properties>
+                                </Component>
+                                <Component class="javax.swing.JLabel" name="jLabelInputScyllaJTpru">
+                                  <Properties>
+                                    <Property name="horizontalAlignment" type="int" value="4"/>
+                                    <Property name="text" type="java.lang.String" value="jLabelInputScyllaJTpru"/>
                                   </Properties>
                                 </Component>
                               </SubComponents>
@@ -1334,7 +1358,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="jScrollPane9" pref="863" max="32767" attributes="0"/>
+                                          <Component id="jScrollPane9" pref="820" max="32767" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -2181,7 +2205,7 @@
                                           </Group>
                                           <Component id="jPanel19" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="9" max="32767" attributes="0"/>
+                                      <EmptySpace max="32767" attributes="0"/>
                                       <Component id="jPanel55" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
@@ -3028,8 +3052,8 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="btnOutputSalesReload" min="-2" pref="132" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabelOutputSales" min="-2" pref="155" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabelOutputSales" min="-2" pref="630" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -3057,7 +3081,8 @@
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabelOutputSales">
                                   <Properties>
-                                    <Property name="text" type="java.lang.String" value="jLabel29"/>
+                                    <Property name="horizontalAlignment" type="int" value="4"/>
+                                    <Property name="text" type="java.lang.String" value="jLabelOutputSales"/>
                                   </Properties>
                                 </Component>
                               </SubComponents>
@@ -3168,8 +3193,8 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="btnOutputStockReload" min="-2" pref="132" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabelOutputStock" min="-2" pref="166" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabelOutputStock" min="-2" pref="642" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -3197,7 +3222,8 @@
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabelOutputStock">
                                   <Properties>
-                                    <Property name="text" type="java.lang.String" value="jLabel29"/>
+                                    <Property name="horizontalAlignment" type="int" value="4"/>
+                                    <Property name="text" type="java.lang.String" value="jLabelOutputStock"/>
                                   </Properties>
                                 </Component>
                               </SubComponents>
@@ -3308,8 +3334,8 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="btnOutputClientReload" min="-2" pref="132" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabelOutputClient" min="-2" pref="199" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabelOutputClient" min="-2" pref="625" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -3337,7 +3363,8 @@
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabelOutputClient">
                                   <Properties>
-                                    <Property name="text" type="java.lang.String" value="jLabel29"/>
+                                    <Property name="horizontalAlignment" type="int" value="4"/>
+                                    <Property name="text" type="java.lang.String" value="jLabelOutputClient"/>
                                   </Properties>
                                 </Component>
                               </SubComponents>
@@ -3448,8 +3475,8 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="btnOutputSalesOrderReload" min="-2" pref="132" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabelOutputSalesOrder" min="-2" pref="210" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabelOutputSalesOrder" min="-2" pref="648" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -3477,7 +3504,8 @@
                                 </Component>
                                 <Component class="javax.swing.JLabel" name="jLabelOutputSalesOrder">
                                   <Properties>
-                                    <Property name="text" type="java.lang.String" value="jLabel29"/>
+                                    <Property name="horizontalAlignment" type="int" value="4"/>
+                                    <Property name="text" type="java.lang.String" value="jLabelOutputSalesOrder"/>
                                   </Properties>
                                 </Component>
                               </SubComponents>
