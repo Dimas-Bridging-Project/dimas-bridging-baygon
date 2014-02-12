@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+   
+    <bean id="SysvarDaoBean" class="org.config.spring.hibernate.dao.SysvarDaoImpl">
+         <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>
+        
+    <bean id="CvOutletDaoBean" class="org.config.spring.hibernate.dao.CvOutletDaoImpl">
+         <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>    
+    <bean id="StockDaoBean" class="org.config.spring.hibernate.dao.StockDaoImpl">
+         <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>    
+    <bean id="JHeaderDaoBean" class="org.config.spring.hibernate.dao.JHeaderDaoImpl">
+         <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>    
+    <bean id="JPcodeDaoBean" class="org.config.spring.hibernate.dao.JPcodeDaoImpl">
+         <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>    
+    <bean id="JTprbDaoBean" class="org.config.spring.hibernate.dao.JTprbDaoImpl">
+         <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>    
+    <bean id="JTpruDaoBean" class="org.config.spring.hibernate.dao.JTpruDaoImpl">
+         <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>    
+    <bean id="MapTipeOutletDaoBean" class="org.config.spring.hibernate.dao.MapTipeOutletDaoImpl">
+         <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>    
+
+    <bean id="OutletDaoBean" class="org.config.spring.hibernate.dao.OutletDaoImpl">
+         <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>    
+    <bean id="ProdukDaoBean" class="org.config.spring.hibernate.dao.ProdukDaoImpl">
+         <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>    
+    <bean id="SalesmanDaoBean" class="org.config.spring.hibernate.dao.SalesmanDaoImpl">
+         <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>    
+    
+    <bean id="TblClientIdDaoBean" class="org.config.spring.hibernate.dao.TblClientIdDaoImpl">
+         <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>    
+    <bean id="TblSalesIdDaoBean" class="org.config.spring.hibernate.dao.TblSalesIdDaoImpl">
+         <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>    
+    <bean id="TblSoIdDaoBean" class="org.config.spring.hibernate.dao.TblSoIdDaoImpl">
+         <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>    
+    <bean id="TblStockIdDaoBean" class="org.config.spring.hibernate.dao.TblStockIdDaoImpl">
+         <property name="sessionFactory" ref="sessionFactory" />  
+    </bean>    
+
+
+</beans>
