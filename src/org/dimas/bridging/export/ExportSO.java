@@ -147,6 +147,11 @@ public class ExportSO {
                             Double doubleHargaNoPpn = Double.valueOf(String.valueOf(itmJPcode.getHargaNoPpn()));
                             Double grossValueFromNoPpn =  doubleHargaNoPpn ;
                             Double grossValueFromWithPpn = doubleHargaNoPpn + (doubleHargaNoPpn*0.1);
+                            //Jika Retur maka akan di negatifkan
+//                            if (itmJPcode.getTipeFakturRetur().trim().equalsIgnoreCase("R")){
+//                                grossValueFromNoPpn = 0-grossValueFromNoPpn;
+//                                grossValueFromWithPpn = 0-grossValueFromWithPpn;
+//                            }
 
                             //19. NetValue; 
                             //Harga Net = HargaNoPpn -DiskonUang -DiskonBarang-diskon atas faktur

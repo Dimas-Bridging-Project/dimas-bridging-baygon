@@ -42,6 +42,8 @@ public class ParseJPcode {
                     JPcode item = new JPcode();
                     JPcodePK jpcodePK = new JPcodePK();
                     
+                    item.setTipeFakturRetur(data[9]);
+                    
                     //item.setSalesman(data[0]);
                     jpcodePK.setSalesman(data[0]);
                     jpcodePK.setIdOrder(data[1]);
@@ -56,8 +58,15 @@ public class ParseJPcode {
                         item.setHrgJualKartonNoPpn(Integer.parseInt(data[5]));
                     if (! data[6].equals(""))
                         item.setHrgJualLsnNoPpn(Integer.parseInt(data[6]));
-                    if (! data[7].equals(""))
-                        item.setHargaNoPpn(Integer.parseInt(data[7]));
+                    if (! data[7].equals("")){
+                        if (item.getTipeFakturRetur().trim().equalsIgnoreCase("R")){
+                            item.setHargaNoPpn(-Integer.parseInt(data[7]));                            
+                        }else{
+                            item.setHargaNoPpn(Integer.parseInt(data[7]));
+                        }
+                    }    
+
+                    
                     item.setJenis(data[8]);
                     item.setTipeFakturRetur(data[9]);
 

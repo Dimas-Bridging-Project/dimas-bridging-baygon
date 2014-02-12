@@ -10,18 +10,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.config.spring.hibernate.model.JHeader;
-import org.config.spring.hibernate.model.JPcode;
-import org.config.spring.hibernate.model.JPcodePK;
-import org.config.spring.hibernate.model.JTprb;
-import org.config.spring.hibernate.model.JTprbPK;
 import org.config.spring.hibernate.model.JTpru;
 import org.config.spring.hibernate.model.JTpruPK;
 
@@ -52,6 +44,8 @@ public class ParseJTpru {
                 //Karena jumlah record benar adalah 5 (8 toleransi)
                 if (data.length > 4) {
                     JTpru item = new JTpru();
+
+                    item.setTipe(data[4]);
                     
                     JTpruPK jtpruPK = new JTpruPK();                    
                     //item.setSalesman(data[0]);
@@ -60,8 +54,13 @@ public class ParseJTpru {
                     jtpruPK.setPcode(data[2]);
                     item.setJtpruPK(jtpruPK);
                     
-                    if (! data[3].equals(""))
-                        item.setHargaNoPpn(Integer.parseInt(data[3]));
+                    if (! data[3].equals("")){
+                        if (item.getTipe().trim().equalsIgnoreCase("R")){
+                            item.setHargaNoPpn(-Integer.parseInt(data[3]));                            
+                        }else {
+                            item.setHargaNoPpn(Integer.parseInt(data[3]));
+                        }
+                    }
                     item.setTipe(data[4]);
 
                     if (item !=null) 

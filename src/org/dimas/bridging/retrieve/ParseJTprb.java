@@ -10,16 +10,10 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.config.spring.hibernate.model.JHeader;
-import org.config.spring.hibernate.model.JPcode;
-import org.config.spring.hibernate.model.JPcodePK;
 import org.config.spring.hibernate.model.JTprb;
 import org.config.spring.hibernate.model.JTprbPK;
 
@@ -51,6 +45,8 @@ public class ParseJTprb {
                     JTprb item = new JTprb();
                     JTprbPK jtprbPK = new JTprbPK();
                     
+                    item.setTipeFakturRetur(data[8]);
+                    
                     //item.setSalesman(data[0]);
                     jtprbPK.setSalesman(data[0]);
                     jtprbPK.setIdOrder(data[1]);
@@ -69,9 +65,14 @@ public class ParseJTprb {
                     item.setHargaNoPpn(0);
                     if (! data[6].equals(""))
                         item.setHrgJualLsnNoPpn(Integer.parseInt(data[6]));
+                    
                     //Harga Jual PcsNoPPn
                     Integer intHargaJualPcsNoPpn = item.getHrgJualLsnNoPpn()/12;
                     Integer intHargaNoPpn = intHargaJualPcsNoPpn * item.getQtyInSat();
+                    //Hati hati dengan output
+                    if (item.getTipeFakturRetur().trim().equalsIgnoreCase("R")){
+                        intHargaNoPpn = -intHargaNoPpn;
+                    }
                     item.setHargaNoPpn(intHargaNoPpn);
                     
                     item.setJenis(data[7]);

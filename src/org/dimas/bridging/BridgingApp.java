@@ -6,7 +6,6 @@ package org.dimas.bridging;
 
 import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.Desktop;
 import java.awt.Dialog;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -20,7 +19,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javassist.bytecode.stackmap.BasicBlock;
 import javax.swing.JOptionPane;
 import org.config.spring.hibernate.model.CvOutlet;
 import org.config.spring.hibernate.model.JHeader;
@@ -482,6 +480,7 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                        + "Upload Outlet.CSV dahulu!!..");
            }
            */
+            printWriter.println("\n\n");
              printWriter.println("####LOG RETRIEVE CVOUTLET(Salesman, Id Outlet, Nama Outlet)######");
            
             String message = "CvOutlet: ";
@@ -538,7 +537,8 @@ public class BridgingApp extends BridgingDefault implements Runnable{
             if (! getTextPathInputJHeader().getText().trim().equals("")) {
                  getTextPathInputJHeader().setBackground(Color.YELLOW);    
                  
-                 printWriter.println("####LOG RETRIEVE JHEADER(Salesman, ID Order, Tanggal Transaksi)######");
+                printWriter.println("\n\n");
+                printWriter.println("####LOG RETRIEVE JHEADER(Salesman, ID Order, Tanggal Transaksi, Type Outlet)######");
                 
                  String message = "JHeader: ";
                 int jmlRecordSuccess = 0;
@@ -579,7 +579,7 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                     } catch(Exception ex) {
                         jmlRecordFail+=1;
                         jmlTotal1Fail += itm.getNetPpn();       
-                        printWriter.println("Salesman: " + itm.getSalesman() + ", " + itm.getIdOrder() + ", " + itm.getTanggal() + ", GAGAL Retrieve!!");
+                        printWriter.println("Salesman: " + itm.getSalesman() + ", " + itm.getIdOrder() + ", " + itm.getTanggal() + ", " + itm.getTypeOutlet() +", GAGAL Retrieve!!");
                         //System.out.println("Test JHeader Gagal: " + itm);
                     }
                 }
@@ -622,6 +622,9 @@ public class BridgingApp extends BridgingDefault implements Runnable{
     public void aksiBtnRetrieveInputJPcode() {
         if (! getTextPathInputJPcode().getText().trim().equals("")) {
              getTextPathInputJPcode().setBackground(Color.YELLOW);
+
+            printWriter.println("\n\n");
+            printWriter.println("####LOG RETRIEVE JPCODE(Salesman, ID Order, Pcode)######");
              
             String message = "JPCode: ";
             int jmlRecordSuccess = 0;
@@ -649,7 +652,9 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                     
                 } catch (Exception ex){
                     jmlRecordFail+=1;
-                    jmlTotal1Fail += itm.getHargaNoPpn();                        
+                    jmlTotal1Fail += itm.getHargaNoPpn();     
+                    printWriter.println("Salesman: " + itm.getJpcodePK().getSalesman() + ", " + itm.getJpcodePK().getIdOrder()  + ", " + itm.getJpcodePK().getPcode() +", GAGAL Retrieve!!");
+                    
                 }
             }
                 aksiBtnInputJpcodeReload();
@@ -678,6 +683,9 @@ public class BridgingApp extends BridgingDefault implements Runnable{
      public void aksiBtnRetrieveInputJTprb() {
        if (! getTextPathInputJTprb().getText().trim().equals("")) {
             getTextPathInputJTprb().setBackground(Color.YELLOW);    
+            
+            printWriter.println("\n\n");
+            printWriter.println("####LOG RETRIEVE JTPRB(Salesman, ID Order, Pcode)######");
   
             String message = "JTprb: ";
             int jmlRecordSuccess = 0;
@@ -711,6 +719,8 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                 } catch (Exception ex){
                     jmlRecordFail+=1;
                     jmlTotal1Fail += itm.getHargaNoPpn(); 
+                    printWriter.println("Salesman: " + itm.getJtprbPK().getSalesman() + ", " + itm.getJtprbPK().getIdOrder()  + ", " + itm.getJtprbPK().getPcode() +", GAGAL Retrieve!!");                    
+                    
                 }    
             }
 //            System.out.println("Test JTPRB: " + jmlMasuk);
@@ -741,6 +751,9 @@ public class BridgingApp extends BridgingDefault implements Runnable{
         if (! getTextPathInputJTpru().getText().trim().equals("")) {
             getTextPathInputJTpru().setBackground(Color.YELLOW);    
 
+            printWriter.println("\n\n");
+            printWriter.println("####LOG RETRIEVE JTPRU(Salesman, ID Order, Pcode)######");
+
             String message = "JTpru: ";
             int jmlRecordSuccess = 0;
             int jmlRecordFail = 0;
@@ -765,7 +778,8 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                 } catch (Exception ex){
                     jmlRecordFail+=1;
                     jmlTotal1Fail += itm.getHargaNoPpn();                        
-
+                    
+                    printWriter.println("Salesman: " + itm.getJtpruPK().getSalesman() + ", " + itm.getJtpruPK().getIdOrder() + ", " + itm.getJtpruPK().getPcode() +", GAGAL Retrieve!!");                    
                 }
             }
             aksiBtnInputJtpruReload();
@@ -793,6 +807,9 @@ public class BridgingApp extends BridgingDefault implements Runnable{
        if (! getTextPathInputMaster().getText().trim().equals("")) {
             getTextPathInputMaster().setBackground(Color.YELLOW);    
 
+            printWriter.println("\n\n");
+            printWriter.println("####LOG RETRIEVE MASTER PRODUCT(Pcode, Nama, Ukuran, Hrg Beli Krt, Hrg Jual Krt)######");
+
             String message = "Produk: ";
             int jmlRecordSuccess = 0;
             int jmlRecordFail = 0;
@@ -816,7 +833,9 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                     
                       } catch (Exception ex){
                         jmlRecordFail+=1;
-  //                    jmlTotal1Fail += itm.getHargaNoPpn();                                             
+  //                    jmlTotal1Fail += itm.getHargaNoPpn();        
+                        printWriter.println("Product: " + itm.getPcode() + ", " + itm.getNamaBrg() + ", " + itm.getUkuran() + ", " + itm.getBeliKrt() + ", " + itm.getJualKrt() +", GAGAL Retrieve!!");                    
+                        
                      }
                              
                  }
@@ -844,6 +863,9 @@ public class BridgingApp extends BridgingDefault implements Runnable{
        if (! getTextPathInputOutlet().getText().trim().equals("")) {
             getTextPathInputOutlet().setBackground(Color.YELLOW);    
 
+            printWriter.println("\n\n");
+            printWriter.println("####LOG RETRIEVE OUTLET(Outlet, Nama, AlamatToko1, AlamatToko2, TipeOutlet)######");
+
             String message = "Produk: ";
             int jmlRecordSuccess = 0;
             int jmlRecordFail = 0;
@@ -868,7 +890,9 @@ public class BridgingApp extends BridgingDefault implements Runnable{
 
                  } catch (Exception ex){
                     jmlRecordFail+=1;
-//                    jmlTotal1Fail += itm.getHargaNoPpn();                                                              
+//                    jmlTotal1Fail += itm.getHargaNoPpn();       
+                    printWriter.println("Outlet: " + itm.getOutlet() + ", " + itm.getNama() + ", " + itm.getAlm1Toko() + ", " + itm.getAlm2Toko() + ", " + itm.getTy() +", GAGAL Retrieve!!");                    
+                    
                 }
             }
             aksiBtnInputOutletReload();
@@ -895,6 +919,9 @@ public class BridgingApp extends BridgingDefault implements Runnable{
        if (! getTextPathInputStock().getText().trim().equals("")) {
             getTextPathInputStock().setBackground(Color.YELLOW);    
 
+            printWriter.println("\n\n");
+            printWriter.println("####LOG RETRIEVE STOK(TanggalStok, Pcode, NamaBarang, TotalStok, HargaBeli, HargaJual)######");
+
             String message = "Produk: ";
             int jmlRecordSuccess = 0;
             int jmlRecordFail = 0;
@@ -917,7 +944,9 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                     jmlTotal1Success += itm.getHargaBeli();
                  } catch (Exception ex){
                     jmlRecordFail+=1;
-                    jmlTotal1Fail += itm.getHargaBeli();                                                              
+                    jmlTotal1Fail += itm.getHargaBeli();  
+                    
+                    printWriter.println("Stok: " + itm.getStockPK().getTangalStock() + ", " + itm.getStockPK().getPcode() + ", " + itm.getNamaBarang() + ", " + itm.getTotalStock() + ", " + itm.getHargaBeli() + ", " + itm.getHargaJual() +", GAGAL Retrieve!!");                                        
                 
                 }
             }
@@ -945,6 +974,9 @@ public class BridgingApp extends BridgingDefault implements Runnable{
     public void aksiBtnRetrieveInputSalesman() {
        if (! getTextPathInputSalesman() .getText().trim().equals("")) {
             getTextPathInputSalesman().setBackground(Color.YELLOW);    
+            
+            printWriter.println("\n\n");
+            printWriter.println("####LOG RETRIEVE SALESMAN(Kode Salesman, Nama, Opr)######");
 
             String message = "Salesman: ";
             int jmlRecordSuccess = 0;
@@ -970,6 +1002,7 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                  } catch (Exception ex){
                     jmlRecordFail+=1;
 //                    jmlTotal1Fail += itm.getHargaNoPpn();                                                              
+                    printWriter.println("Salesman: " + itm.getSalesman() + ", " + itm.getNamaSls() + ", " + itm.getOpr()  +", GAGAL Retrieve!!");                                        
                 
                 }
             }
@@ -1041,14 +1074,14 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                     
                     //Untuk menulis ke file
                     printWriter.close();
+                    try {
+                        java.awt.Desktop.getDesktop().open(retrieveFilePath);                        
+                    } catch (IOException e) {}
 
                     //BAGIAN BUKA DENGAN NOTEPAD DISINI
-                    try {
-                        if (JOptionPane.showConfirmDialog(this, "Buka File Log Retrieve?", "Konfimasi", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) {
-                            java.awt.Desktop.getDesktop().open(retrieveFilePath);
-                        }
-                    } catch (IOException e) {}
-                                    
+//                if (JOptionPane.showConfirmDialog(this, "Buka File Log Retrieve?", "Konfimasi", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) {                                            
+//                }  else {
+//                }          
                     
             }
             
@@ -1069,7 +1102,6 @@ public class BridgingApp extends BridgingDefault implements Runnable{
 
     @Override
     public void run() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
  
     

@@ -14,8 +14,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.config.spring.hibernate.dao.JHeaderDaoInter;
-import org.config.spring.hibernate.dao.JPcodeDaoInter;
 import org.config.spring.hibernate.dao.JTprbDaoInter;
 import org.config.spring.hibernate.dao.JTpruDaoInter;
 import org.config.spring.hibernate.dao.SysvarDaoInter;
@@ -67,16 +65,21 @@ public class ExportSales {
             String whDesc = sysvarDao.findById("_WH_DESC").getNilaiString1();
             
             //List<Outlet> lst = outletDao.findAll();
-
+            
             SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd");
+            
+            Integer pencacah = 0;
+            
             for (JHeader itm: lst) {
                 
 //                if (sdf.format(tglTransaksiFrom).equalsIgnoreCase(sdf.format(itm.getTanggal()))) {
                     
                     Integer intDiskonAtasFakturPersen = itm.getDisAtasFaktur()/itm.getGross() * 100;
                     
-                    List<JPcode> listJPcode = new ArrayList<>(itm.getJpcodeSet());
+                    List<JPcode> listJPcode = new ArrayList<>(itm.getJpcodeSet());                    
                     for (JPcode itmJPcode:listJPcode) {
+                        pencacah +=1;
+                        
                         if ( ! itmJPcode.getJpcodePK().getPcode().trim().substring(0,2).equalsIgnoreCase("BB")){
                             TblSalesId item = new TblSalesId();
                             TblSalesIdPK itemPK = new TblSalesIdPK();
@@ -144,9 +147,14 @@ public class ExportSales {
                             //Harga Gross = Harga Jual (Sebelum dikurangi diskon, Sebelum ditambah Ppn)
                             //Harga Net = Gross - Diskon + Ppn
                             
-                            Double doubleHargaNoPpn = Double.valueOf(String.valueOf(itmJPcode.getHargaNoPpn()));
+                            Double doubleHargaNoPpn = Double.valueOf(String.valueOf(itmJPcode.getHargaNoPpn()));                            
                             Double grossValueFromNoPpn =  doubleHargaNoPpn ;
                             Double grossValueFromWithPpn = doubleHargaNoPpn + (doubleHargaNoPpn*0.1);
+                            //Jika Retur maka akan di negatifkan
+//                            if (itmJPcode.getTipeFakturRetur().trim().equalsIgnoreCase("R")){
+//                                grossValueFromNoPpn = 0-grossValueFromNoPpn;
+//                                grossValueFromWithPpn = 0-grossValueFromWithPpn;
+//                            }
                             
                             //19. NetValue; 
                             //Harga Net = Gross -PPN -DiskonUang -DiskonBarang-diskon atas faktur
@@ -229,6 +237,8 @@ public class ExportSales {
 //                } 
                
             }
+            
+            System.out.println("ExportSales Hitung: " + pencacah );
             printWriter.close();
         } catch (IOException ex) {
             Logger.getLogger(ExportSales.class.getName()).log(Level.SEVERE, null, ex);

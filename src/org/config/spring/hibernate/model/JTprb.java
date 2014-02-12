@@ -112,6 +112,8 @@ public class JTprb implements Serializable {
         this.HargaNoPpn = HargaNoPpn;
     }
 
+
+
     public String getJenis() {
         return Jenis;
     }
