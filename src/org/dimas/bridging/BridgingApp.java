@@ -6,13 +6,21 @@ package org.dimas.bridging;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.Desktop;
 import java.awt.Dialog;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javassist.bytecode.stackmap.BasicBlock;
 import javax.swing.JOptionPane;
 import org.config.spring.hibernate.model.CvOutlet;
 import org.config.spring.hibernate.model.JHeader;
@@ -49,6 +57,27 @@ import org.dimas.bridging.utils.DialogProses;
  * @author yhawin
  */
 public class BridgingApp extends BridgingDefault implements Runnable{
+            
+            String retrieveLogPath;
+            File retrieveFilePath;
+            FileWriter fileWriter;                        
+            BufferedWriter bufferedWriter;
+            PrintWriter printWriter;
+
+    public BridgingApp() {
+            //Inisilaisasi file untuk log
+            retrieveLogPath = System.getProperty("user.home");
+            retrieveFilePath = new File(retrieveLogPath + "/retrieve-log.txt");            
+            try {
+                this.fileWriter = fileWriter = new FileWriter(retrieveFilePath);
+            } catch (IOException ex) {
+                Logger.getLogger(BridgingApp.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            bufferedWriter = new BufferedWriter(fileWriter);
+            printWriter = new PrintWriter(bufferedWriter);
+            printWriter.println("RETRIEVE DATA TANGGAL " + new Date());
+    }
+          
     
     public void BridgingApp(){
         initFormDefa();
@@ -382,7 +411,8 @@ public class BridgingApp extends BridgingDefault implements Runnable{
     @Override
     public void aksiBtnExtractStock() {        
          if ((! getTextPathOutput().getText().trim().equals("")) && (getjDateChooserExtract1().getDate()!=null)) {
-             
+                  
+            
             String message = "Stock: ";
             int jmlRecordSuccess = 0;
             int jmlRecordFail = 0;
@@ -452,6 +482,7 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                        + "Upload Outlet.CSV dahulu!!..");
            }
            */
+             printWriter.println("####LOG RETRIEVE CVOUTLET(Salesman, Id Outlet, Nama Outlet)######");
            
             String message = "CvOutlet: ";
             int jmlRecordSuccess = 0;
@@ -474,6 +505,8 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                     jmlRecordSuccess+=1;
                 } catch (Exception ex){
                     jmlRecordFail+=1;
+                    printWriter.println("Salesman: " + itm.getSalesman() + ", " + itm.getOutlet() + ", " + itm.getOutlet2().getNama() + ", GAGAL Retrieve!!");                    
+                    
                 }
             }
             aksiBtnInputCvOutletReload();
@@ -504,8 +537,10 @@ public class BridgingApp extends BridgingDefault implements Runnable{
        if (lanjut==true) {       
             if (! getTextPathInputJHeader().getText().trim().equals("")) {
                  getTextPathInputJHeader().setBackground(Color.YELLOW);    
-
-                String message = "JHeader: ";
+                 
+                 printWriter.println("####LOG RETRIEVE JHEADER(Salesman, ID Order, Tanggal Transaksi)######");
+                
+                 String message = "JHeader: ";
                 int jmlRecordSuccess = 0;
                 int jmlRecordFail = 0;
                 int jmlTotal1Success = 0;
@@ -525,7 +560,7 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                 ParseJHeader parse = new ParseJHeader();
                 List<JHeader> lst = new ArrayList<>();
                 lst = parse.parseJHeader(getTextPathInputJHeader().getText());
-
+                
                 int hitungJumlah = 0;
                 for (JHeader itm: lst) {
                     try {
@@ -543,7 +578,8 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                         jmlTotal1Success += itm.getNetPpn();
                     } catch(Exception ex) {
                         jmlRecordFail+=1;
-                        jmlTotal1Fail += itm.getNetPpn();                        
+                        jmlTotal1Fail += itm.getNetPpn();       
+                        printWriter.println("Salesman: " + itm.getSalesman() + ", " + itm.getIdOrder() + ", " + itm.getTanggal() + ", GAGAL Retrieve!!");
                         //System.out.println("Test JHeader Gagal: " + itm);
                     }
                 }
@@ -994,12 +1030,28 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                 */ 
 
                 //Stock belakangan karena harus ada transaksi dulu
-                try {
+                
+            
+            
+            try {
                     aksiBtnRetrieveInputStock();
-                } catch (Exception ex){
-                } finally {
+            } catch (Exception ex){
+            } finally {
                     this.setCursor(Cursor.getDefaultCursor());
-                }  
+                    
+                    //Untuk menulis ke file
+                    printWriter.close();
+
+                    //BAGIAN BUKA DENGAN NOTEPAD DISINI
+                    try {
+                          java.awt.Desktop.getDesktop().open(retrieveFilePath);
+                          //desktop.open(retrieveFilePath);
+                    } catch (IOException e) {}
+                                    
+                    
+            }
+            
+            
         }  
         
         

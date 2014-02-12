@@ -138,6 +138,15 @@ public class ExportSO {
                             //Revisi tanggal 4 juli 2013 tidak kelebihan (;)
                             printWriter.print(itmJPcode.getQtyInSat() + ";");
                             item.setQty(itmJPcode.getQtyInSat());
+                            
+                            //#######PERHITUNGAN HARGA GROSS DAN NET##########
+                            //REVISI NET DAN GROSS: 12-Feb-2014
+                            //Harga Gross = Harga Jual (Sebelum dikurangi diskon, Sebelum ditambah Ppn)
+                            //Harga Net = Gross - Diskon + Ppn
+
+                            Double doubleHargaNoPpn = Double.valueOf(String.valueOf(itmJPcode.getHargaNoPpn()));
+                            Double grossValueFromNoPpn =  doubleHargaNoPpn ;
+                            Double grossValueFromWithPpn = doubleHargaNoPpn + (doubleHargaNoPpn*0.1);
 
                             //19. NetValue; 
                             //Harga Net = HargaNoPpn -DiskonUang -DiskonBarang-diskon atas faktur
@@ -164,20 +173,25 @@ public class ExportSO {
                             for (JTpru itemJTpru: listJTpru) {
                                 intDiskonUangRupiah += itemJTpru.getHargaNoPpn();
                             }
-
-                            int intNetSales = itmJPcode.getHargaNoPpn() - intDiskonAtasFakturBarangTertentuRupiah 
+                            //#####PERHITUNGAN HARGA NET VALUE BISA MENGAMBIL DARI GROSS ATAU DARI jpcode
+                            int intNetSalesNoPpn = itmJPcode.getHargaNoPpn() - intDiskonAtasFakturBarangTertentuRupiah 
                                     - intDiskonBarangRupiah - intDiskonUangRupiah;
-                            Double doubleNetsales = Double.valueOf(String.valueOf(intNetSales));
-                            printWriter.print(doubleNetsales + ";");
-                            item.setNetValue(doubleNetsales);
+                            Double doubleNetsalesNoPpn = Double.valueOf(String.valueOf(intNetSalesNoPpn));
+                            Double doubleNetSalesWithPpn = doubleNetsalesNoPpn + (doubleNetsalesNoPpn * 0.1);
+
+                            printWriter.print(doubleNetSalesWithPpn + ";");
+                            item.setNetValue(doubleNetSalesWithPpn);
 
                             //20. GrossValue; = -PPN + diskonUang + diskonBarang + diskon atas faktur = HargaNoPpnScylla                   
                             //Qty * Harga = Gross -PPN ?
                             //Actual = Harga + PPn
-                            Double doubleHargaNoPpn = Double.valueOf(String.valueOf(itmJPcode.getHargaNoPpn()));
-                            //Double grossValueFromWithPpn =  doubleHargaNoPpn + (doubleHargaNoPpn * 0.1) ;
-                            Double grossValueFromNoPpn =  doubleHargaNoPpn ;                     
+                            
+                             //REVISI NET DAN GROSS: 12-Feb-2014
+                            //Harga Gross = Harga Jual (Sebelum dikurangi diskon, Sebelum ditambah Ppn)
+                            //Harga Net = Gross - Diskon + Ppn
+                            
                             String strGrossValueFromNoPpn = String.valueOf(grossValueFromNoPpn);
+                            String strGrossValueFromWithPpn = String.valueOf(grossValueFromWithPpn);
 
                             printWriter.print(strGrossValueFromNoPpn + ";");
                             item.setGrossValue(grossValueFromNoPpn);                

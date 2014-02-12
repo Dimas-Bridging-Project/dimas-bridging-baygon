@@ -113,7 +113,7 @@ public class BridgingDefault  extends BridgingUI implements ActionListener {
     DynamicTableModel<TblSoId> tmTblSoId = null;
 
     //Nanti diganti
-    public String currentPath = "/home/yhawin/Dimas/Input-File/";
+    public String currentPath = "C:/";
     
     public BridgingDefault() {
         this.setTitle("BridgingApp >> DIMAS MALANG >> BAYGON"); 
