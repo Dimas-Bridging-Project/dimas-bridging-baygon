@@ -323,6 +323,7 @@ public class BridgingDefault  extends BridgingUI implements ActionListener {
     }
     @Override
      public void aksiBtnExtractStock() {
+         
     }
     
     
@@ -538,6 +539,7 @@ public class BridgingDefault  extends BridgingUI implements ActionListener {
     public void aksiBtnOutputStockReload() {
         //Reload Output hanya bisa jika MODE DATABASE
         List<TblStockId> lst = new ArrayList<>();
+        System.out.println("AKSIBTN STOCK EXTRACT: " + lst.size());
         if (databaseMode==true) {
             lst = tblStockIdDao.findAll();
         }else {

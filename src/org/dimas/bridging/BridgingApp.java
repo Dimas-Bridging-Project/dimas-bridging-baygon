@@ -14,7 +14,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
-import javax.swing.text.NumberFormatter;
 import org.config.spring.hibernate.model.CvOutlet;
 import org.config.spring.hibernate.model.JHeader;
 import org.config.spring.hibernate.model.JPcode;
@@ -191,6 +190,15 @@ public class BridgingApp extends BridgingDefault {
     @Override
     public void aksiBtnExtractClient() {
         if (! getTextPathOutput().getText().trim().equals("")) {
+
+            String message = "Client: ";
+            int jmlRecordSuccess = 0;
+            int jmlRecordFail = 0;
+            int jmlTotal1Success = 0;
+            int jmlTotal1Fail = 0;
+            int jmlTotal2Success = 0;
+            int jmlTotal2Fail = 0;
+            
             ExportClient f = new ExportClient();
             List<Outlet> lst = new ArrayList<>();
             
@@ -209,9 +217,25 @@ public class BridgingApp extends BridgingDefault {
                    } else {
                        tblClientIdDaoMem.saveOrUpdate(itm);
                    }
-                } catch (Exception ex){}
+                    jmlRecordSuccess+=1;
+                    //jmlTotal1Success += itm.getNetPpn();
+                } catch(Exception ex) {
+                    jmlRecordFail+=1;
+                    //jmlTotal1Fail += itm.getNetPpn();                        
+                
+                }
+                
             }
             aksiBtnOutputClientReload();
+            
+                NumberFormat nf = NumberFormat.getNumberInstance();
+                nf.setMinimumFractionDigits(0); //jumlah pecahan dibelakang koma
+                nf.setMaximumFractionDigits(0); //jumlah pecahan dibelakang koma
+                message = message + "Jml Rec Success: " + Integer.toString(jmlRecordSuccess) + ", Fail: " + Integer.toString(jmlRecordFail) 
+//                        + ",  Net+Ppn Success: " + String.valueOf(nf.format(jmlTotal1Success)) 
+//                        + " and Fail: " + String.valueOf(nf.format(jmlTotal1Fail)) 
+                        ;          
+                getjLabelOutputClient().setText(message);
                  
             
         } 
@@ -220,6 +244,15 @@ public class BridgingApp extends BridgingDefault {
     public void aksiBtnExtractSales() {
          if ((! getTextPathOutput().getText().trim().equals("")) && (getjDateChooserExtract1().getDate()!=null) 
                  && (getjDateChooserExtract2().getDate()!=null)) {
+             
+            String message = "Sales: ";
+            int jmlRecordSuccess = 0;
+            int jmlRecordFail = 0;
+            int jmlTotal1Success = 0;
+            int jmlTotal1Fail = 0;
+            int jmlTotal2Success = 0;
+            int jmlTotal2Fail = 0;
+             
             //Tanggal Stock adalah sehari sebelum Tanggal transaksi
             Calendar cal1 = Calendar.getInstance();
             cal1.setTime(getjDateChooserExtract1().getDate());
@@ -252,10 +285,30 @@ public class BridgingApp extends BridgingDefault {
                     } else {
                         tblSalesIdDaoMem.saveOrUpdate(itm);                        
                     }
-                } catch (Exception ex){}
+                    jmlRecordSuccess+=1;
+                    jmlTotal1Success += itm.getNetValue();
+                    jmlTotal2Success += itm.getGrossValue();
+                } catch(Exception ex) {
+                    jmlRecordFail+=1;
+                    jmlTotal1Fail += itm.getNetValue();
+                    jmlTotal2Fail += itm.getGrossValue();
+
+                }
+                
             }
 
             aksiBtnOutputSalesReload();
+                NumberFormat nf = NumberFormat.getNumberInstance();
+                nf.setMinimumFractionDigits(0); //jumlah pecahan dibelakang koma
+                nf.setMaximumFractionDigits(0); //jumlah pecahan dibelakang koma
+                message = message + "Jml Rec Success: " + Integer.toString(jmlRecordSuccess) + ", Fail: " + Integer.toString(jmlRecordFail) 
+                        + ",  NET Success: " + String.valueOf(nf.format(jmlTotal1Success)) 
+                        + " and Fail: " + String.valueOf(nf.format(jmlTotal1Fail)) 
+                        + ",  GROSS Success: " + String.valueOf(nf.format(jmlTotal2Success)) 
+                        + " and Fail: " + String.valueOf(nf.format(jmlTotal2Fail)) 
+                        ;          
+                getjLabelOutputSales().setText(message);
+            
                              
         } else {
             JOptionPane.showMessageDialog(this, "PATH OUTPUT atau TANGGAL MUNGKIN KOSONG");
@@ -265,6 +318,15 @@ public class BridgingApp extends BridgingDefault {
     @Override
     public void aksiBtnExtractSo() {
          if ((! getTextPathOutput().getText().trim().equals("")) && (getjDateChooserExtract1().getDate()!=null)) {
+
+             String message = "SO: ";
+            int jmlRecordSuccess = 0;
+            int jmlRecordFail = 0;
+            int jmlTotal1Success = 0;
+            int jmlTotal1Fail = 0;
+            int jmlTotal2Success = 0;
+            int jmlTotal2Fail = 0;
+             
             //Tanggal Stock adalah sehari sebelum Tanggal transaksi
             Calendar cal1 = Calendar.getInstance();
             cal1.setTime(getjDateChooserExtract1().getDate());
@@ -289,10 +351,28 @@ public class BridgingApp extends BridgingDefault {
                     } else {
                         tblSoIdDaoMem.saveOrUpdate(itm);
                     }
-                } catch (Exception ex){}
+                    jmlRecordSuccess+=1;
+                    jmlTotal1Success += itm.getNetValue();
+                    jmlTotal2Success += itm.getGrossValue();
+                } catch(Exception ex) {
+                    jmlRecordFail+=1;
+                    jmlTotal1Fail += itm.getNetValue();
+                    jmlTotal2Fail += itm.getGrossValue();
+
+                }
             }
 
             aksiBtnOutputSalesOrderReload();
+                NumberFormat nf = NumberFormat.getNumberInstance();
+                nf.setMinimumFractionDigits(0); //jumlah pecahan dibelakang koma
+                nf.setMaximumFractionDigits(0); //jumlah pecahan dibelakang koma
+                message = message + "Jml Rec Success: " + Integer.toString(jmlRecordSuccess) + ", Fail: " + Integer.toString(jmlRecordFail) 
+                        + ",  NET Success: " + String.valueOf(nf.format(jmlTotal1Success)) 
+                        + " and Fail: " + String.valueOf(nf.format(jmlTotal1Fail)) 
+                        + ",  GROSS Success: " + String.valueOf(nf.format(jmlTotal2Success)) 
+                        + " and Fail: " + String.valueOf(nf.format(jmlTotal2Fail)) 
+                        ;          
+                getjLabelOutputSalesOrder().setText(message);
             
         } else {
             JOptionPane.showMessageDialog(this, "PATH OUTPUT atau TANGGAL MUNGKIN KOSONG");
@@ -302,6 +382,15 @@ public class BridgingApp extends BridgingDefault {
     @Override
     public void aksiBtnExtractStock() {        
          if ((! getTextPathOutput().getText().trim().equals("")) && (getjDateChooserExtract1().getDate()!=null)) {
+             
+            String message = "Stock: ";
+            int jmlRecordSuccess = 0;
+            int jmlRecordFail = 0;
+            int jmlTotal1Success = 0;
+            int jmlTotal1Fail = 0;
+            int jmlTotal2Success = 0;
+            int jmlTotal2Fail = 0;
+             
             //Tanggal Stock adalah sehari sebelum Tanggal transaksi
             Calendar cal = Calendar.getInstance();
             cal.setTime(getjDateChooserExtract1().getDate());
@@ -315,8 +404,8 @@ public class BridgingApp extends BridgingDefault {
             } else {
                 lst = stockDaoMem.findAllByTanggalStock(tanggalSebelum); //diganti dengan yang punya tanggal
             }
-            List<TblStockId> listStockId = f.ExportToCsvFromListToFile(getTextPathOutput().getText() + "Stock_ID.CSV", lst);
             
+            List<TblStockId> listStockId = f.ExportToCsvFromListToFile(getTextPathOutput().getText() + "Stock_ID.CSV", lst);            
             for (TblStockId itm: listStockId ) {
                 try {
                     if (databaseMode==true) {
@@ -324,10 +413,31 @@ public class BridgingApp extends BridgingDefault {
                     } else {
                         tblStockIdDaoMem.saveOrUpdate(itm);
                     }
-                } catch (Exception ex){}
+                    jmlRecordSuccess+=1;
+//                    jmlTotal1Success += itm.getNetValue();
+//                    jmlTotal2Success += itm.getGrossValue();
+                } catch(Exception ex) {
+                    jmlRecordFail+=1;
+//                    jmlTotal1Fail += itm.getNetValue();
+//                    jmlTotal2Fail += itm.getGrossValue();
+                    
+                    
+                }
+                
             }
-
-            aksiBtnOutputStockReload();            
+            System.out.println("STOCK EXTRACT: " + tblStockIdDaoMem.getAll().size());
+            
+            aksiBtnOutputStockReload();     
+            
+                NumberFormat nf = NumberFormat.getNumberInstance();
+                nf.setMinimumFractionDigits(0); //jumlah pecahan dibelakang koma
+                nf.setMaximumFractionDigits(0); //jumlah pecahan dibelakang koma
+                message = message + "Jml Rec Success: " + Integer.toString(jmlRecordSuccess) + ", Fail: " + Integer.toString(jmlRecordFail) 
+//                        + ",  NET Success: " + String.valueOf(nf.format(jmlTotal1Success)) 
+//                        + " and Fail: " + String.valueOf(nf.format(jmlTotal1Fail)) 
+                        ;          
+                getjLabelOutputStock().setText(message);
+            
         } else {
             JOptionPane.showMessageDialog(this, "PATH OUTPUT atau TANGGAL MUNGKIN KOSONG");
         }
@@ -550,8 +660,8 @@ public class BridgingApp extends BridgingDefault {
                     
             Integer jmlMasuk = 0;
             for (JTprb itm: lst) {
-                System.out.println("Test JTPRB: " + itm.getJtprbPK());
                 
+                //System.out.println("Test JTPRB: " + itm.getJtprbPK());                
                 try {
                     if (databaseMode==true){
                         jtprbDao.saveOrUpdate(itm);

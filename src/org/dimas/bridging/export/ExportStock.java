@@ -168,7 +168,6 @@ public class ExportStock {
                     printWriter.println(reservedField + "");
 
                     //Untuk Isi List
-
                     list.add(item);
                 }
             }
