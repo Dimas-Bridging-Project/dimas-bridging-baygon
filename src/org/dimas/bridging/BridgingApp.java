@@ -48,7 +48,7 @@ import org.dimas.bridging.utils.DialogProses;
  *
  * @author yhawin
  */
-public class BridgingApp extends BridgingDefault {
+public class BridgingApp extends BridgingDefault implements Runnable{
     
     public void BridgingApp(){
         initFormDefa();
@@ -405,7 +405,7 @@ public class BridgingApp extends BridgingDefault {
                 lst = stockDaoMem.findAllByTanggalStock(tanggalSebelum); //diganti dengan yang punya tanggal
             }
             
-            List<TblStockId> listStockId = f.ExportToCsvFromListToFile(getTextPathOutput().getText() + "Stock_ID.CSV", lst);            
+            List<TblStockId> listStockId = f.ExportToCsvFromListToFile(getTextPathOutput().getText() + "Stock_ID.CSV", lst);     
             for (TblStockId itm: listStockId ) {
                 try {
                     if (databaseMode==true) {
@@ -425,7 +425,6 @@ public class BridgingApp extends BridgingDefault {
                 }
                 
             }
-            System.out.println("STOCK EXTRACT: " + tblStockIdDaoMem.getAll().size());
             
             aksiBtnOutputStockReload();     
             
@@ -1014,6 +1013,11 @@ public class BridgingApp extends BridgingDefault {
         thread.start();
             
     }          
+
+    @Override
+    public void run() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
  
     
     
@@ -1053,7 +1057,5 @@ class GenericRunnable implements Runnable{
     public void setNamaProses(String namaProses) {
         this.namaProses = namaProses;
     }
-
-  
     
 }

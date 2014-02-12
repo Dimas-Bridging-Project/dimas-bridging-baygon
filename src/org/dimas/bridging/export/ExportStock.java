@@ -86,7 +86,8 @@ public class ExportStock {
 
             for (Stock itm: lst) {
                 if ( ! itm.getStockPK().getPcode().trim().substring(0,2).equalsIgnoreCase("BB")){                
-                    TblStockId item = new TblStockId();                
+                    TblStockId item = new TblStockId();   
+                    
                     Date tglStock = itm.getStockPK().getTangalStock();
 
                     //1 --> RecordType;
@@ -105,7 +106,7 @@ public class ExportStock {
                     item.setScjProductCode(itm.getStockPK().getPcode());
                     //5. DistributorProductCode
                     printWriter.print(itm.getStockPK().getPcode() + ";");
-                    item.setDistributorCode(itm.getStockPK().getPcode());
+                    item.setDistributorProductCode(itm.getStockPK().getPcode());
                     //6. Qty;
                     String strQty = String.valueOf(itm.getTotalStockInPcs());
                     printWriter.print(strQty + ";");
@@ -183,7 +184,9 @@ public class ExportStock {
                 Logger.getLogger(ExportStock.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
         return list;
+        
     }
     public int ExportToCsvFromDBToFile(String filePathDestination) {
         try {

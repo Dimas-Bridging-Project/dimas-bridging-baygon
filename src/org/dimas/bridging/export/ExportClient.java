@@ -59,11 +59,11 @@ public class ExportClient {
             String recordType=sysvarDao.findById("_REC_CLN").getNilaiString1();
             String distCode = sysvarDao.findById("_DIST_CODE").getNilaiString1();
  
-            System.out.print(lst.size());
+            //System.out.print(lst.size());
             
             for (Outlet itm: lst) {
-                System.out.print(itm.getOutlet());
-                System.out.println(itm.getNama());
+                //System.out.print(itm.getOutlet());
+                //System.out.println(itm.getNama());
                 
                 printWriter.print(recordType + ";");
                 printWriter.print(distCode + ";");
