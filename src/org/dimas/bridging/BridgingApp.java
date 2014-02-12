@@ -1044,8 +1044,9 @@ public class BridgingApp extends BridgingDefault implements Runnable{
 
                     //BAGIAN BUKA DENGAN NOTEPAD DISINI
                     try {
-                          java.awt.Desktop.getDesktop().open(retrieveFilePath);
-                          //desktop.open(retrieveFilePath);
+                        if (JOptionPane.showConfirmDialog(this, "Buka File Log Retrieve?", "Konfimasi", JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION) {
+                            java.awt.Desktop.getDesktop().open(retrieveFilePath);
+                        }
                     } catch (IOException e) {}
                                     
                     
