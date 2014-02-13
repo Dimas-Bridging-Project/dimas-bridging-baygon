@@ -600,12 +600,17 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                         }
                         jmlRecordSuccess+=1;
                         jmlTotal1Success += itm.getNetPpn();
+                        jmlTotal2Success += itm.getGross();
+                        
                     } catch(Exception ex) {
                         jmlRecordFail+=1;
                         jmlTotal1Fail += itm.getNetPpn();       
+                        jmlTotal2Fail += itm.getGross();
+                        
                                 printWriter.println("Salesman: " + itm.getSalesman() + ", " + itm.getIdOrder() + ", " + itm.getTanggal() + 
                                         ", " + itm.getGross() +
-                                        ", " + itm.getTypeOutlet() +", GAGAL Retrieve!!");                                
+                                        ", " + itm.getTypeOutlet() +", GAGAL Retrieve!!");    
+                                
                         //System.out.println("Test JHeader Gagal: " + itm);
                     }
                 }
@@ -614,10 +619,12 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                 NumberFormat nf = NumberFormat.getNumberInstance();
                 nf.setMinimumFractionDigits(0); //jumlah pecahan dibelakang koma
                 nf.setMaximumFractionDigits(0); //jumlah pecahan dibelakang koma
-                message = message + "Rec Db Success: " + jheaderDaoMem.findAll().size() + ", Rec Success: " + Integer.toString(jmlRecordSuccess) + 
+                message = message + "Rec Db: " + jheaderDaoMem.findAll().size() + ", Rec: " + Integer.toString(jmlRecordSuccess) + 
                         ", Fail: " + Integer.toString(jmlRecordFail) + 
-                        ",  Net+Ppn Success: " + String.valueOf(nf.format(jmlTotal1Success)) + 
-                        " and Fail: " + String.valueOf(nf.format(jmlTotal1Fail) );          
+                        ",  Net+Ppn: " + String.valueOf(nf.format(jmlTotal1Success)) + 
+                        " and Fail: " + String.valueOf(nf.format(jmlTotal1Fail) + 
+                        " Gross: " + String.valueOf(nf.format(jmlTotal2Success)) + 
+                        " and Fail: " + String.valueOf(nf.format(jmlTotal2Fail)));          
                 getjLabelInputScyllaJHeader().setText(message);
 
 //                System.out.println(" Jumlah Jheader yang berhasil masuk : " + jheaderDaoMem.findAll().size() + " dari " + hitungJumlah);

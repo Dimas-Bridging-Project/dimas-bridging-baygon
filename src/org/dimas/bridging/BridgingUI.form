@@ -178,8 +178,8 @@
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="btnInputMasterReload" min="-2" pref="132" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabelInputScyllaMasterProduk" min="-2" pref="615" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                                          <Component id="jLabelInputScyllaMasterProduk" min="-2" pref="640" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -187,11 +187,12 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="btnInputMasterReload" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabelInputScyllaMasterProduk" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          </Group>
+                                          <Component id="btnInputMasterReload" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace pref="18" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jLabelInputScyllaMasterProduk" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -329,11 +330,14 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="btnInputStockReload" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabelInputScyllaStock" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="btnInputStockReload" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Component id="jLabelInputScyllaStock" max="32767" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="18" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -459,22 +463,25 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnInputOutletReload" min="-2" pref="132" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabelInputScyllaOutlet" min="-2" pref="639" max="-2" attributes="0"/>
+                                          <Component id="btnInputOutletReload" min="-2" pref="118" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                                          <Component id="jLabelInputScyllaOutlet" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
                                 <DimensionLayout dim="1">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="btnInputOutletReload" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabelInputScyllaOutlet" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="btnInputOutletReload" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Component id="jLabelInputScyllaOutlet" alignment="1" max="32767" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="18" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -883,9 +890,9 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnInputJheaderReload" min="-2" pref="132" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                          <Component id="jLabelInputScyllaJHeader" min="-2" pref="635" max="-2" attributes="0"/>
+                                          <Component id="btnInputJheaderReload" min="-2" pref="96" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabelInputScyllaJHeader" min="-2" pref="700" max="-2" attributes="0"/>
                                           <EmptySpace max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -894,11 +901,14 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="btnInputJheaderReload" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabelInputScyllaJHeader" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabelInputScyllaJHeader" max="32767" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="btnInputJheaderReload" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
+                                              </Group>
                                           </Group>
-                                          <EmptySpace pref="18" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1025,9 +1035,9 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnInputJpcodeReload" min="-2" pref="132" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabelInputScyllaJPCode" min="-2" pref="629" max="-2" attributes="0"/>
+                                          <Component id="btnInputJpcodeReload" min="-2" pref="101" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabelInputScyllaJPCode" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -1036,11 +1046,14 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="btnInputJpcodeReload" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabelInputScyllaJPCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="btnInputJpcodeReload" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Component id="jLabelInputScyllaJPCode" max="32767" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="18" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1166,22 +1179,24 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnInputJtprbReload" min="-2" pref="132" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabelInputScyllaJTprb" min="-2" pref="642" max="-2" attributes="0"/>
+                                          <Component id="btnInputJtprbReload" min="-2" pref="98" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabelInputScyllaJTprb" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
                                 <DimensionLayout dim="1">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="btnInputJtprbReload" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="jLabelInputScyllaJTprb" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="btnInputJtprbReload" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace pref="18" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Component id="jLabelInputScyllaJTprb" alignment="1" max="32767" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="18" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
@@ -1307,9 +1322,9 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnInputJtpruReload" min="-2" pref="132" max="-2" attributes="0"/>
-                                          <EmptySpace max="32767" attributes="0"/>
-                                          <Component id="jLabelInputScyllaJTpru" min="-2" pref="606" max="-2" attributes="0"/>
+                                          <Component id="btnInputJtpruReload" min="-2" pref="101" max="-2" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="jLabelInputScyllaJTpru" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -1319,10 +1334,13 @@
                                       <Group type="102" alignment="0" attributes="0">
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabelInputScyllaJTpru" min="-2" max="-2" attributes="0"/>
-                                              <Component id="btnInputJtpruReload" min="-2" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="btnInputJtpruReload" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace min="0" pref="6" max="32767" attributes="0"/>
+                                              </Group>
+                                              <Component id="jLabelInputScyllaJTpru" max="32767" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="18" max="32767" attributes="0"/>
+                                          <EmptySpace max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                 </DimensionLayout>
