@@ -19,6 +19,7 @@ import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import sun.misc.VM;
 
 /**
  *
@@ -67,20 +68,22 @@ public class GenericDaoImpl<T, ID extends Serializable> extends HibernateDaoSupp
     //@Transactional(propagation = Propagation.SUPPORTS, readOnly=false)
     @Override
     public void save(T domain) throws HibernateException {
-        try {
+        //try {
         getHibernateTemplate().save(domain);
-        } catch (Exception ex) {}
+        //} catch (Exception ex) {
+       // 
+        //}
     }
     
-    @SuppressWarnings("unchecked")
-    @Transactional(propagation = Propagation.SUPPORTS, readOnly=false)
+//    @SuppressWarnings("unchecked")
+//    @Transactional(propagation = Propagation.SUPPORTS, readOnly=false)
     @Override
     public void saveOrUpdate(T domain) throws HibernateException {
-        try {
+//        try {
             getHibernateTemplate().saveOrUpdate(domain);
-        } catch(Exception ex){
-            System.err.println("error saveOrUpdate: " + domain.toString());
-        };
+//        } catch(Exception ex){
+//            System.err.println("error saveOrUpdate: " + domain.toString());
+//        };
         
     }
     /*
@@ -121,7 +124,7 @@ public class GenericDaoImpl<T, ID extends Serializable> extends HibernateDaoSupp
     @Override
     public void deleteAll() throws HibernateException {
         try {
-            String hql = String.format("delete from %s",domainClass.getName());
+            String hql = String.format("delete from ",domainClass.getName());
             Query query = getSession().createQuery(hql);        
             query.executeUpdate(); 
         } catch (Exception ex) {};

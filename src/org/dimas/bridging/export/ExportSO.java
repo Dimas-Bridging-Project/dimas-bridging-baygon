@@ -73,7 +73,8 @@ public class ExportSO {
             for (JHeader itm: lst) {
 //                if (sdf.format(tglTransaksiFrom).equalsIgnoreCase(sdf.format(itm.getTanggal()))) {
                 
-                    Integer intDiskonAtasFakturPersen = itm.getDisAtasFaktur()/itm.getGross() * 100;
+                    Double doubleDiskonAtasFakturPersen = (double)itm.getDisAtasFaktur()/(double)itm.getGross() * 100;
+//                    System.out.println(itm.getIdOrder() + "\t" + doubleDiskonAtasFakturPersen + "\t" + itm.getDisAtasFaktur() + "\t" + itm.getGross());
                     
                     List<JPcode> listJPcode = new ArrayList<>(itm.getJpcodeSet());
                     for (JPcode itmJPcode:listJPcode) {
@@ -156,7 +157,10 @@ public class ExportSO {
                             //19. NetValue; 
                             //Harga Net = HargaNoPpn -DiskonUang -DiskonBarang-diskon atas faktur
                             //Actual : HargaNoPpn -DiskonUang -DiskonBarang-diskon atas faktur
-                            Integer intDiskonAtasFakturBarangTertentuRupiah = (intDiskonAtasFakturPersen/100) * itmJPcode.getHargaNoPpn();
+                            Double doubleDiskonAtasFakturPecahan = (double)doubleDiskonAtasFakturPersen/100;
+                            Double doubleDiskonAtasFakturBarangTertentuRupiah = doubleDiskonAtasFakturPecahan * itmJPcode.getHargaNoPpn();
+                            Integer intDiskonAtasFakturBarangTertentuRupiah = doubleDiskonAtasFakturBarangTertentuRupiah.intValue();
+
                             int intDiskonBarangRupiah =0;
                             List<JTprb> listJTprb = new ArrayList<>();
                             if (databaseMode==true){
@@ -178,14 +182,14 @@ public class ExportSO {
                             for (JTpru itemJTpru: listJTpru) {
                                 intDiskonUangRupiah += itemJTpru.getHargaNoPpn();
                             }
-                            //#####PERHITUNGAN HARGA NET VALUE BISA MENGAMBIL DARI GROSS ATAU DARI jpcode
-                            int intNetSalesNoPpn = itmJPcode.getHargaNoPpn() - intDiskonAtasFakturBarangTertentuRupiah 
-                                    - intDiskonBarangRupiah - intDiskonUangRupiah;
-                            Double doubleNetsalesNoPpn = Double.valueOf(String.valueOf(intNetSalesNoPpn));
-                            Double doubleNetSalesWithPpn = doubleNetsalesNoPpn + (doubleNetsalesNoPpn * 0.1);
+                            Integer intTotalDisc = intDiskonAtasFakturBarangTertentuRupiah + intDiskonBarangRupiah + intDiskonUangRupiah;
+//                            Integer intTotalDisc = intDiskonBarangRupiah + intDiskonUangRupiah;                            
+                            Double doubleTotalDisc = (double) intTotalDisc;
+                            Double doubleNetSalesNoPpn = grossValueFromNoPpn - doubleTotalDisc;
+                            Double doubleNetSalesWithPpn = doubleNetSalesNoPpn + (doubleNetSalesNoPpn * 0.1);
 
-                            printWriter.print(doubleNetSalesWithPpn + ";");
-                            item.setNetValue(doubleNetSalesWithPpn);
+                            printWriter.print(doubleNetSalesNoPpn + ";");
+                            item.setNetValue(doubleNetSalesNoPpn);
 
                             //20. GrossValue; = -PPN + diskonUang + diskonBarang + diskon atas faktur = HargaNoPpnScylla                   
                             //Qty * Harga = Gross -PPN ?

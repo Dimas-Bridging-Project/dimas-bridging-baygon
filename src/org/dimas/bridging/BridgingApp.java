@@ -20,6 +20,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.config.spring.hibernate.dao.JHeaderDaoImpl;
+import org.config.spring.hibernate.dao.JHeaderDaoInter;
+import org.config.spring.hibernate.dao.MapTipeOutletDaoInter;
 import org.config.spring.hibernate.model.CvOutlet;
 import org.config.spring.hibernate.model.JHeader;
 import org.config.spring.hibernate.model.JPcode;
@@ -538,7 +541,7 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                  getTextPathInputJHeader().setBackground(Color.YELLOW);    
                  
                 printWriter.println("\n\n");
-                printWriter.println("####LOG RETRIEVE JHEADER(Salesman, ID Order, Tanggal Transaksi, Type Outlet)######");
+                printWriter.println("####LOG RETRIEVE JHEADER(Salesman, ID Order, Tanggal Transaksi, GROSS, Type Outlet)######");
                 
                  String message = "JHeader: ";
                 int jmlRecordSuccess = 0;
@@ -549,6 +552,9 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                 int jmlTotal2Fail = 0;
 
                 //Untuk mode Database Memory
+//                mapTipeOutletDaoMem = (MapTipeOutletDaoInter) appContextMem.getBean("MapTipeOutletDaoBean");
+                //mapTipeOutletDaoMem.deleteAll();
+                
                 List<MapTipeOutlet> lstMap = mapTipeOutletDao.findAll();    
                 for (MapTipeOutlet itmMap: lstMap) {
                     //System.out.println("Tipe Outlet : " + itmMap.getTipeOutlet());
@@ -561,6 +567,10 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                 List<JHeader> lst = new ArrayList<>();
                 lst = parse.parseJHeader(getTextPathInputJHeader().getText());
                 
+//                jheaderDaoMem = new JHeaderDaoImpl();
+//                jheaderDaoMem = (JHeaderDaoInter) appContextMem.getBean("JHeaderDaoBean");
+//                jheaderDaoMem.deleteAll();
+                
                 int hitungJumlah = 0;
                 for (JHeader itm: lst) {
                     try {
@@ -570,16 +580,32 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                             //System.out.println(itm.getIdOrder() + "\t" +  itm.getTypeOutlet() + 
                             //        "\t"+  itm.getTypeOutlet());
                             //File MapOutletTidakBisa Masuk secara otomatis jadi harus di masukkan
-                            jheaderDaoMem.saveOrUpdate(itm);
-                            
+                            //jheaderDaoMem.saveOrUpdate(itm);
+                            try{
+                                jheaderDaoMem.save(itm);
+                            } catch(Exception ex){
+                                printWriter.println("Salesman: " + itm.getSalesman() + ", " + itm.getIdOrder() + ", " + itm.getTanggal() + 
+                                        ", " + itm.getGross() +
+                                        ", " + itm.getTypeOutlet() +", GAGAL Retrieve!! DUPLIKASI");                                
+                            }                           
                             hitungJumlah++;
+                            //INI BISA MEMPERLAMBAT
+//                            if (hitungJumlah>jheaderDaoMem.findAll().size()){
+//                                printWriter.println("Salesman: " + itm.getSalesman() + ", " + itm.getIdOrder() + ", " + itm.getTanggal() + 
+//                                        ", " + itm.getGross() +
+//                                        ", " + itm.getTypeOutlet() +", GAGAL Retrieve!! DUPLIKASI");                                
+//                                hitungJumlah--;
+//                            }
+                            
                         }
                         jmlRecordSuccess+=1;
                         jmlTotal1Success += itm.getNetPpn();
                     } catch(Exception ex) {
                         jmlRecordFail+=1;
                         jmlTotal1Fail += itm.getNetPpn();       
-                        printWriter.println("Salesman: " + itm.getSalesman() + ", " + itm.getIdOrder() + ", " + itm.getTanggal() + ", " + itm.getTypeOutlet() +", GAGAL Retrieve!!");
+                                printWriter.println("Salesman: " + itm.getSalesman() + ", " + itm.getIdOrder() + ", " + itm.getTanggal() + 
+                                        ", " + itm.getGross() +
+                                        ", " + itm.getTypeOutlet() +", GAGAL Retrieve!!");                                
                         //System.out.println("Test JHeader Gagal: " + itm);
                     }
                 }
@@ -588,12 +614,13 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                 NumberFormat nf = NumberFormat.getNumberInstance();
                 nf.setMinimumFractionDigits(0); //jumlah pecahan dibelakang koma
                 nf.setMaximumFractionDigits(0); //jumlah pecahan dibelakang koma
-                message = message + "Jml Rec Success: " + Integer.toString(jmlRecordSuccess) + ", Fail: " + Integer.toString(jmlRecordFail) + 
+                message = message + "Rec Db Success: " + jheaderDaoMem.findAll().size() + ", Rec Success: " + Integer.toString(jmlRecordSuccess) + 
+                        ", Fail: " + Integer.toString(jmlRecordFail) + 
                         ",  Net+Ppn Success: " + String.valueOf(nf.format(jmlTotal1Success)) + 
                         " and Fail: " + String.valueOf(nf.format(jmlTotal1Fail) );          
                 getjLabelInputScyllaJHeader().setText(message);
-                
-                //System.out.println(" Jumlah Jheader yang berhasil masuk : " + jheaderDaoMem.findAll().size() + " dari " + hitungJumlah);
+
+//                System.out.println(" Jumlah Jheader yang berhasil masuk : " + jheaderDaoMem.findAll().size() + " dari " + hitungJumlah);
                 
                 //Indikator jika berhasil atau gagal     
                  if (tmJHeader.getRowCount() > 0) {
@@ -624,7 +651,7 @@ public class BridgingApp extends BridgingDefault implements Runnable{
              getTextPathInputJPcode().setBackground(Color.YELLOW);
 
             printWriter.println("\n\n");
-            printWriter.println("####LOG RETRIEVE JPCODE(Salesman, ID Order, Pcode)######");
+            printWriter.println("####LOG RETRIEVE JPCODE(Salesman, ID Order, Pcode, HargaNoPpn )######");
              
             String message = "JPCode: ";
             int jmlRecordSuccess = 0;
@@ -637,7 +664,9 @@ public class BridgingApp extends BridgingDefault implements Runnable{
              ParseJPcode parse = new ParseJPcode();
              List<JPcode> lst = new ArrayList<>();
              lst = parse.parseJPcode(getTextPathInputJPcode().getText());
-
+             
+//             jpcodeDaoMem.deleteAll();
+             
              int hitungMasuk=0;
              for (JPcode itm: lst) {
                 try {
@@ -653,7 +682,8 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                 } catch (Exception ex){
                     jmlRecordFail+=1;
                     jmlTotal1Fail += itm.getHargaNoPpn();     
-                    printWriter.println("Salesman: " + itm.getJpcodePK().getSalesman() + ", " + itm.getJpcodePK().getIdOrder()  + ", " + itm.getJpcodePK().getPcode() +", GAGAL Retrieve!!");
+                    printWriter.println("Salesman: " + itm.getJpcodePK().getSalesman() + ", " + itm.getJpcodePK().getIdOrder()  + 
+                            ", " + itm.getJpcodePK().getPcode() + ", " + itm.getHargaNoPpn() + ", GAGAL Retrieve!!");
                     
                 }
             }
@@ -685,7 +715,7 @@ public class BridgingApp extends BridgingDefault implements Runnable{
             getTextPathInputJTprb().setBackground(Color.YELLOW);    
             
             printWriter.println("\n\n");
-            printWriter.println("####LOG RETRIEVE JTPRB(Salesman, ID Order, Pcode)######");
+            printWriter.println("####LOG RETRIEVE JTPRB(Salesman, ID Order, Pcode, HargaNoPpn)######");
   
             String message = "JTprb: ";
             int jmlRecordSuccess = 0;
@@ -699,7 +729,8 @@ public class BridgingApp extends BridgingDefault implements Runnable{
             List<JTprb> lst = new ArrayList<>();
             lst = parse.parseJTprb(getTextPathInputJTprb().getText());
 
-            //System.out.println("Test JTPRB: " + lst.size());
+//            jtprbDaoMem.deleteAll();
+//            //System.out.println("Test JTPRB: " + lst.size());
                     
             Integer jmlMasuk = 0;
             for (JTprb itm: lst) {
@@ -719,7 +750,8 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                 } catch (Exception ex){
                     jmlRecordFail+=1;
                     jmlTotal1Fail += itm.getHargaNoPpn(); 
-                    printWriter.println("Salesman: " + itm.getJtprbPK().getSalesman() + ", " + itm.getJtprbPK().getIdOrder()  + ", " + itm.getJtprbPK().getPcode() +", GAGAL Retrieve!!");                    
+                    printWriter.println("Salesman: " + itm.getJtprbPK().getSalesman() + ", " + itm.getJtprbPK().getIdOrder()  +
+                            ", " + itm.getJtprbPK().getPcode() + ", " + itm.getHargaNoPpn() + ", GAGAL Retrieve!!");                    
                     
                 }    
             }
@@ -752,7 +784,7 @@ public class BridgingApp extends BridgingDefault implements Runnable{
             getTextPathInputJTpru().setBackground(Color.YELLOW);    
 
             printWriter.println("\n\n");
-            printWriter.println("####LOG RETRIEVE JTPRU(Salesman, ID Order, Pcode)######");
+            printWriter.println("####LOG RETRIEVE JTPRU(Salesman, ID Order, Pcode, HargaNoPpn)######");
 
             String message = "JTpru: ";
             int jmlRecordSuccess = 0;
@@ -762,6 +794,8 @@ public class BridgingApp extends BridgingDefault implements Runnable{
             int jmlTotal2Success = 0;
             int jmlTotal2Fail = 0;
 
+//            jtpruDaoMem.deleteAll();
+            
             ParseJTpru parse = new ParseJTpru();
             List<JTpru> lst = new ArrayList<>();
             lst = parse.parseJTpru(getTextPathInputJTpru().getText());
@@ -779,7 +813,8 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                     jmlRecordFail+=1;
                     jmlTotal1Fail += itm.getHargaNoPpn();                        
                     
-                    printWriter.println("Salesman: " + itm.getJtpruPK().getSalesman() + ", " + itm.getJtpruPK().getIdOrder() + ", " + itm.getJtpruPK().getPcode() +", GAGAL Retrieve!!");                    
+                    printWriter.println("Salesman: " + itm.getJtpruPK().getSalesman() + ", " + itm.getJtpruPK().getIdOrder() + 
+                            ", " + itm.getJtpruPK().getPcode() + ", " + itm.getHargaNoPpn() +  ", GAGAL Retrieve!!");                    
                 }
             }
             aksiBtnInputJtpruReload();
@@ -818,6 +853,8 @@ public class BridgingApp extends BridgingDefault implements Runnable{
             int jmlTotal2Success = 0;
             int jmlTotal2Fail = 0;
 
+//            produkDaoMem.deleteAll();
+            
             ParseMSPCODE parse = new ParseMSPCODE();
             List<Produk> lst = new ArrayList<>();
             lst = parse.parseMSPCODE(getTextPathInputMaster().getText());
@@ -873,6 +910,8 @@ public class BridgingApp extends BridgingDefault implements Runnable{
             int jmlTotal1Fail = 0;
             int jmlTotal2Success = 0;
             int jmlTotal2Fail = 0;
+            
+//            outletDaoMem.deleteAll();
             
             ParseOutlet parse = new ParseOutlet();
             List<Outlet> lst = new ArrayList<>();
@@ -930,6 +969,8 @@ public class BridgingApp extends BridgingDefault implements Runnable{
             int jmlTotal2Success = 0;
             int jmlTotal2Fail = 0;
             
+//            stockDaoMem.deleteAll();
+            
             ParseStock parse = new ParseStock();
             List<Stock> lst = new ArrayList<>();
             lst = parse.parseStock(getTextPathInputStock().getText(), getjDateChooseTanggalStock().getDate());
@@ -985,6 +1026,8 @@ public class BridgingApp extends BridgingDefault implements Runnable{
             int jmlTotal1Fail = 0;
             int jmlTotal2Success = 0;
             int jmlTotal2Fail = 0;
+            
+//            salesmanDaoMem.deleteAll();
             
             ParseSalesman parse = new ParseSalesman();
             List<Salesman> lst = new ArrayList<>();
@@ -1065,6 +1108,18 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                 //Stock belakangan karena harus ada transaksi dulu
                 
             
+            //TEST JHEADER
+            int pencacahNota = 0;
+            int pencacahItem = 0;
+            List<JHeader> list = new ArrayList<>(jheaderDaoMem.findAll());
+            for (JHeader item: list){
+                pencacahNota++;
+                List<JPcode> lst = new ArrayList<>(item.getJpcodeSet());
+                for (JPcode itm: lst){
+                    pencacahItem++;
+                }
+            }
+            System.out.println("RETRIEVE ALL :" + pencacahNota + " >> " + pencacahItem);
             
             try {
                     aksiBtnRetrieveInputStock();
@@ -1103,8 +1158,6 @@ public class BridgingApp extends BridgingDefault implements Runnable{
     @Override
     public void run() {
     }
- 
-    
     
     
 }

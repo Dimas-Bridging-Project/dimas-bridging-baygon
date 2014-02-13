@@ -74,8 +74,9 @@ public class ExportSales {
                 
 //                if (sdf.format(tglTransaksiFrom).equalsIgnoreCase(sdf.format(itm.getTanggal()))) {
                     
-                    Integer intDiskonAtasFakturPersen = itm.getDisAtasFaktur()/itm.getGross() * 100;
-                    
+                    Double doubleDiskonAtasFakturPersen = (double)itm.getDisAtasFaktur()/(double)itm.getGross() * 100;
+//                    System.out.println(itm.getIdOrder() + "\t" + doubleDiskonAtasFakturPersen + "\t" + itm.getDisAtasFaktur() + "\t" + itm.getGross());
+                     
                     List<JPcode> listJPcode = new ArrayList<>(itm.getJpcodeSet());                    
                     for (JPcode itmJPcode:listJPcode) {
                         pencacah +=1;
@@ -125,18 +126,18 @@ public class ExportSales {
                             printWriter.print(itmJPcode.getJheader().getMapTipeOutlet().getDeskripsi() + ";");
                             item.setOutletTypeDesc(itmJPcode.getJheader().getMapTipeOutlet().getDeskripsi());
 
-//                            //14. Clientcode;
-//                            printWriter.print(itmJPcode.getJheader().getOutlet2().getOutlet() + ";");
-//                            item.setClientCode(itmJPcode.getJheader().getOutlet2().getOutlet());
-//                            //15. Clientname;
-//                            printWriter.print(itmJPcode.getJheader().getOutlet2().getNama() + ";");
-//                            item.setClientName(itmJPcode.getJheader().getOutlet2().getNama().replaceAll(";", " "));
-//                            //16. City;
-//                            printWriter.print(itmJPcode.getJheader().getOutlet2().getKotaToko() + ";");
-//                            item.setCity(itmJPcode.getJheader().getOutlet2().getKotaToko());
-//                            //17. DeliveryAddress;
-//                            printWriter.print(itmJPcode.getJheader().getOutlet2().getAlm1Toko() + ";");
-//                            item.setDeliveryAddress(itmJPcode.getJheader().getOutlet2().getAlm1Toko().replace(";", " "));
+                            //14. Clientcode;
+                            printWriter.print(itmJPcode.getJheader().getOutlet2().getOutlet() + ";");
+                            item.setClientCode(itmJPcode.getJheader().getOutlet2().getOutlet());
+                            //15. Clientname;
+                            printWriter.print(itmJPcode.getJheader().getOutlet2().getNama() + ";");
+                            item.setClientName(itmJPcode.getJheader().getOutlet2().getNama().replaceAll(";", " "));
+                            //16. City;
+                            printWriter.print(itmJPcode.getJheader().getOutlet2().getKotaToko() + ";");
+                            item.setCity(itmJPcode.getJheader().getOutlet2().getKotaToko());
+                            //17. DeliveryAddress;
+                            printWriter.print(itmJPcode.getJheader().getOutlet2().getAlm1Toko() + ";");
+                            item.setDeliveryAddress(itmJPcode.getJheader().getOutlet2().getAlm1Toko().replace(";", " "));
                             //18. Qty;
                             //Revisi tanggal 4 juli 2013 tidak kelebihan (;)
                             printWriter.print(itmJPcode.getQtyInSat() + ";");
@@ -163,8 +164,12 @@ public class ExportSales {
                             //REVISI NET DAN GROSS: 12-Feb-2014
                             //Harga Gross = Harga Jual (Sebelum dikurangi diskon, Sebelum ditambah Ppn)
                             //Harga Net = Gross - Diskon + Ppn
-                            Integer intDiskonAtasFakturBarangTertentuRupiah = (intDiskonAtasFakturPersen/100) * itmJPcode.getHargaNoPpn();
-                            int intDiskonBarangRupiah =0;
+                            Double doubleDiskonAtasFakturPecahan = (double)doubleDiskonAtasFakturPersen/100;
+                            //OTOMATIS MINUS KARENA  itmJPcode.getHargaNoPpn() bernilai Plus atau Minus
+                            Double doubleDiskonAtasFakturBarangTertentuRupiah = doubleDiskonAtasFakturPecahan * itmJPcode.getHargaNoPpn();
+                            Integer intDiskonAtasFakturBarangTertentuRupiah = doubleDiskonAtasFakturBarangTertentuRupiah.intValue();
+                            
+                            int intDiskonBarangRupiah = 0;
                             List<JTprb> listJTprb = new ArrayList<>();
                             if (databaseMode==true){
                                 listJTprb = jtprbDao.findAllByIdOrderAndPcode(itmJPcode.getJpcodePK().getIdOrder(), itmJPcode.getJpcodePK().getPcode());;
@@ -185,16 +190,26 @@ public class ExportSales {
                             for (JTpru itemJTpru: listJTpru) {
                                 intDiskonUangRupiah += itemJTpru.getHargaNoPpn();
                             }
+                            
+                            
                             //#####PERHITUNGAN HARGA NET VALUE BISA MENGAMBIL DARI GROSS ATAU DARI jpcode
-                            int intNetSalesNoPpn = itmJPcode.getHargaNoPpn() - intDiskonAtasFakturBarangTertentuRupiah 
-                                    - intDiskonBarangRupiah - intDiskonUangRupiah;
-                            Double doubleNetsalesNoPpn = Double.valueOf(String.valueOf(intNetSalesNoPpn));
-                            Double doubleNetSalesWithPpn = doubleNetsalesNoPpn + (doubleNetsalesNoPpn * 0.1);
-                            printWriter.print(doubleNetSalesWithPpn + ";");
-                            //printWriter.print("Net Value;");
-                            item.setNetValue(doubleNetSalesWithPpn);
+                            Integer intTotalDisc = intDiskonAtasFakturBarangTertentuRupiah + intDiskonBarangRupiah + intDiskonUangRupiah;
+                            
+//                            if (itmJPcode.getTipeFakturRetur().trim().equalsIgnoreCase("R")){
+//                                System.out.println("HITUNG DISKON " +itm.getIdOrder() + "\t" +  intDiskonAtasFakturBarangTertentuRupiah + "\t"
+//                                + intDiskonBarangRupiah + "\t" + intDiskonUangRupiah);
+//                            }
+                            
+//                            Integer intTotalDisc = intDiskonBarangRupiah + intDiskonUangRupiah;                            
+                            Double doubleTotalDisc = (double) intTotalDisc;
+                            Double doubleNetSalesNoPpn = grossValueFromNoPpn - doubleTotalDisc;
+                            Double doubleNetSalesWithPpn = doubleNetSalesNoPpn + (doubleNetSalesNoPpn * 0.1);
 
-                            //20. GrossValue; = -PPN + diskonUang + diskonBarang + diskon atas faktur = HargaNoPpnScylla  
+                            printWriter.print(doubleNetSalesNoPpn + ";");
+                            //printWriter.print("Net Value;");
+                            item.setNetValue(doubleNetSalesNoPpn);
+
+                             //20. GrossValue; = -PPN + diskonUang + diskonBarang + diskon atas faktur = HargaNoPpnScylla  
                             //Qty * Harga = Gross -PPN ?
                             //Actual = Harga + PPn
 
