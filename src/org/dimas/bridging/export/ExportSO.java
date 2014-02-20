@@ -161,16 +161,18 @@ public class ExportSO {
                             Double doubleDiskonAtasFakturBarangTertentuRupiah = doubleDiskonAtasFakturPecahan * itmJPcode.getHargaNoPpn();
                             Integer intDiskonAtasFakturBarangTertentuRupiah = doubleDiskonAtasFakturBarangTertentuRupiah.intValue();
 
+                            //TERNYATA TPRB CUMA MENGURANGI BARANG TIDAK UANG: INFORMASI MBAK UMI TANGGAL 18 FEB 2014
                             int intDiskonBarangRupiah =0;
-                            List<JTprb> listJTprb = new ArrayList<>();
-                            if (databaseMode==true){
-                                listJTprb = jtprbDao.findAllByIdOrderAndPcode(itmJPcode.getJpcodePK().getIdOrder(), itmJPcode.getJpcodePK().getPcode());;
-                            } else {
-                                listJTprb = jtprbDaoMem.findAllByIdOrderAndPcode(itmJPcode.getJpcodePK().getIdOrder(), itmJPcode.getJpcodePK().getPcode());;
-                            }
-                            for (JTprb itemJTprb: listJTprb) {
-                                intDiskonBarangRupiah += itemJTprb.getHargaNoPpn();
-                            }                  
+//                            List<JTprb> listJTprb = new ArrayList<>();
+//                            if (databaseMode==true){
+//                                listJTprb = jtprbDao.findAllByIdOrderAndPcode(itmJPcode.getJpcodePK().getIdOrder(), itmJPcode.getJpcodePK().getPcode());;
+//                            } else {
+//                                listJTprb = jtprbDaoMem.findAllByIdOrderAndPcode(itmJPcode.getJpcodePK().getIdOrder(), itmJPcode.getJpcodePK().getPcode());;
+//                            }
+//                            for (JTprb itemJTprb: listJTprb) {
+//                                intDiskonBarangRupiah += itemJTprb.getHargaNoPpn();
+//                            }                  
+                            intDiskonBarangRupiah = 0; //SO AKU ENOLKAN
 
                             int intDiskonUangRupiah = 0;
                             List<JTpru> listJTpru = new ArrayList<>();
