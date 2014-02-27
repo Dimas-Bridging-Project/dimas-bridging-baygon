@@ -84,6 +84,7 @@ public class ExportSales {
                         if ( ! itmJPcode.getJpcodePK().getPcode().trim().substring(0,2).equalsIgnoreCase("BB")){
                             TblSalesId item = new TblSalesId();
                             TblSalesIdPK itemPK = new TblSalesIdPK();
+                            
                             //1. RecordType;
                             printWriter.print(recordType + ";");
                             item.setRecordType(recordType);
@@ -108,7 +109,9 @@ public class ExportSales {
                             item.setProductDescription(itmJPcode.getProduk().getNamaBrg());
                             //8. SalesmanCode;
                             printWriter.print(itmJPcode.getJheader().getSalesman2().getSalesman() + ";");
-                            item.setSalesmanCode(itmJPcode.getJheader().getSalesman2().getSalesman());
+                            //KARENA KITA MERUBAH SALESMAN CODE
+//                            item.setSalesmanCode(itmJPcode.getJheader().getSalesman2().getSalesman());
+                            itemPK.setSalesmanCode(itmJPcode.getJheader().getSalesman2().getSalesman());
                             //9. SalesmanName;
                             printWriter.print(itmJPcode.getJheader().getSalesman2().getNamaSls() + ";");
                             item.setSalesmanName(itmJPcode.getJheader().getSalesman2().getNamaSls());

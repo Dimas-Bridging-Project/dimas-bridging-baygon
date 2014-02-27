@@ -52,11 +52,13 @@ public class JPcodePK implements Serializable {
     public String toString() {
         return IdOrder + "-" + Pcode + "-" + Salesman;
     }
+
     @Override
     public int hashCode() {
         int hash = 7;
-        hash = 71 * hash + Objects.hashCode(this.IdOrder);
-        hash = 71 * hash + Objects.hashCode(this.Pcode);
+        hash = 37 * hash + Objects.hashCode(this.IdOrder);
+        hash = 37 * hash + Objects.hashCode(this.Pcode);
+        hash = 37 * hash + Objects.hashCode(this.Salesman);
         return hash;
     }
 
@@ -75,9 +77,11 @@ public class JPcodePK implements Serializable {
         if (!Objects.equals(this.Pcode, other.Pcode)) {
             return false;
         }
+        if (!Objects.equals(this.Salesman, other.Salesman)) {
+            return false;
+        }
         return true;
     }
- 
     
     
 }

@@ -32,8 +32,6 @@ public class TblSoId implements Serializable {
     private String ScjProductCode;
     @Column(name="product_description", length=100)
     private String ProductDescription;
-    @Column(name="salesman_code", length=20)
-    private String SalesmanCode;
     @Column(name="salesman_name", length=50)
     private String SalesmanName;
     @Column(name="warehouse_code", length=20)
@@ -116,14 +114,6 @@ public class TblSoId implements Serializable {
 
     public void setProductDescription(String ProductDescription) {
         this.ProductDescription = ProductDescription;
-    }
-
-    public String getSalesmanCode() {
-        return SalesmanCode;
-    }
-
-    public void setSalesmanCode(String SalesmanCode) {
-        this.SalesmanCode = SalesmanCode;
     }
 
     public String getSalesmanName() {

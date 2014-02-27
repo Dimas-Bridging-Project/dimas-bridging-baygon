@@ -20,9 +20,10 @@ public class TblSalesIdPK implements Serializable {
     @Column(name="invoice_number", length=20,  nullable=false)
     private String InvoiceNumber;
     @Column(name="distributor_product_code", length=20 , nullable=false)
-    private String DistributorProductCode;
-   
-   
+    private String DistributorProductCode;   
+    @Column(name="salesman_code", length=20)
+    private String SalesmanCode;
+
     public String getInvoiceNumber() {
         return InvoiceNumber;
     }
@@ -39,11 +40,27 @@ public class TblSalesIdPK implements Serializable {
         this.DistributorProductCode = DistributorProductCode;
     }
 
+    public String getSalesmanCode() {
+        return SalesmanCode;
+    }
+
+    public void setSalesmanCode(String SalesmanCode) {
+        this.SalesmanCode = SalesmanCode;
+    }
+
+    @Override
+    public String toString() {
+        return InvoiceNumber + "-" + DistributorProductCode + "-" + SalesmanCode ;
+    }
+
+    
+    
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 37 * hash + Objects.hashCode(this.InvoiceNumber);
-        hash = 37 * hash + Objects.hashCode(this.DistributorProductCode);
+        int hash = 7;
+        hash = 97 * hash + Objects.hashCode(this.InvoiceNumber);
+        hash = 97 * hash + Objects.hashCode(this.DistributorProductCode);
+        hash = 97 * hash + Objects.hashCode(this.SalesmanCode);
         return hash;
     }
 
@@ -62,9 +79,12 @@ public class TblSalesIdPK implements Serializable {
         if (!Objects.equals(this.DistributorProductCode, other.DistributorProductCode)) {
             return false;
         }
+        if (!Objects.equals(this.SalesmanCode, other.SalesmanCode)) {
+            return false;
+        }
         return true;
     }
- 
+
     
     
 }

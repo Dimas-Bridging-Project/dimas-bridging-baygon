@@ -105,7 +105,9 @@ public class ExportSO {
                             item.setProductDescription(itmJPcode.getProduk().getNamaBrg());
                             //8. SalesmanCode;
                             printWriter.print(itmJPcode.getJheader().getSalesman2().getSalesman() + ";");
-                            item.setSalesmanCode(itmJPcode.getJheader().getSalesman2().getSalesman());
+                            //Salesman Code dipindah ke Primary key
+//                            item.setSalesmanCode(itmJPcode.getJheader().getSalesman2().getSalesman());
+                            itemPK.setSalesmanCode(itmJPcode.getJheader().getSalesman2().getSalesman());
                             //9. SalesmanName;
                             printWriter.print(itmJPcode.getJheader().getSalesman2().getNamaSls() + ";");
                             item.setSalesmanName(itmJPcode.getJheader().getSalesman2().getNamaSls());

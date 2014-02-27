@@ -290,6 +290,7 @@ public class BridgingApp extends BridgingDefault implements Runnable{
             
             List<JHeader> lst = new ArrayList<>();
             ExportSales f = new ExportSales();
+            
 //            if (databaseMode==true) {
 //                lst = jheaderDao.findAllByDate(cal1.getTime()); //diganti dengan yang punya tanggal
 //            } else {
@@ -302,8 +303,12 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                 lst = jheaderDaoMem.findAllByDate(cal1.getTime(), cal2.getTime());                 
             }
             
+            System.out.println("lst: "  + lst.size());
+            
             List<TblSalesId> listSalesId = f.ExportToCsvFromListToFile(getTextPathOutput().getText() + "Sales_ID.CSV",
                     getjDateChooserExtract1().getDate(),  getjDateChooserExtract2().getDate(), lst, databaseMode);
+            
+            System.out.println("listSalesId: "  + listSalesId.size());
             
             for (TblSalesId itm: listSalesId ) {
                 try {
@@ -433,6 +438,7 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                 lst = stockDaoMem.findAllByTanggalStock(tanggalSebelum); //diganti dengan yang punya tanggal
             }
             
+                        
             List<TblStockId> listStockId = f.ExportToCsvFromListToFile(getTextPathOutput().getText() + "Stock_ID.CSV", lst);     
             for (TblStockId itm: listStockId ) {
                 try {
@@ -540,7 +546,7 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                 printWriter.println("\n\n");
                 printWriter.println("####LOG RETRIEVE JHEADER(Salesman, ID Order, Tanggal Transaksi, GROSS, Type Outlet)######");
                 
-                 String message = "JHeader: ";
+                String message = "JHeader: ";
                 int jmlRecordSuccess = 0;
                 int jmlRecordFail = 0;
                 int jmlTotal1Success = 0;
@@ -702,6 +708,8 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                 getjLabelInputScyllaJPCode().setText(message);
 //            System.out.println("Jumlah ambil dari Dao : " + jpcodeDaoMem.findAll().size() + " dari : " + hitungMasuk);
             
+               System.out.println("JPCODE SIZE: " + jpcodeDaoMem.findAll().size());
+                
              //Indikator jika berhasil atau gagal     
              if (tmJPcode.getRowCount() > 0) {
                  getTextPathInputJPcode().setBackground(Color.GREEN);
@@ -1113,17 +1121,18 @@ public class BridgingApp extends BridgingDefault implements Runnable{
                 
             
             //TEST JHEADER
-            int pencacahNota = 0;
-            int pencacahItem = 0;
-            List<JHeader> list = new ArrayList<>(jheaderDaoMem.findAll());
-            for (JHeader item: list){
-                pencacahNota++;
-                List<JPcode> lst = new ArrayList<>(item.getJpcodeSet());
-                for (JPcode itm: lst){
-                    pencacahItem++;
-                }
-            }
-            System.out.println("RETRIEVE ALL :" + pencacahNota + " >> " + pencacahItem);
+//            int pencacahNota = 0;
+//            int pencacahItem = 0;
+//            List<JHeader> list = new ArrayList<>(jheaderDaoMem.findAll());
+//            for (JHeader item: list){
+//                pencacahNota++;
+//                List<JPcode> lst = new ArrayList<>(item.getJpcodeSet());
+//                for (JPcode itm: lst){
+//                    pencacahItem++;
+//                }
+//            }
+//            
+//            System.out.println("RETRIEVE ALL :" + pencacahNota + " >> " + pencacahItem);
             
             try {
                     aksiBtnRetrieveInputStock();
