@@ -49,6 +49,8 @@ public class JTprbPK implements Serializable {
         this.Salesman = Salesman;
     }
 
+    
+    
     @Override
     public int hashCode() {
         int hash = 7;
@@ -81,7 +83,7 @@ public class JTprbPK implements Serializable {
 
     @Override
     public String toString() {
-        return "JTprbPK{" + "IdOrder=" + IdOrder + ", Pcode=" + Pcode + ", Salesman=" + Salesman + '}';
+        return IdOrder + "-" + Pcode + "-" + Salesman;
     }
 
 

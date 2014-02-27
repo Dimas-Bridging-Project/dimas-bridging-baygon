@@ -80,7 +80,7 @@ public class JTpruPK implements Serializable {
 
     @Override
     public String toString() {
-        return "JTpruPK{" + "IdOrder=" + IdOrder + ", Pcode=" + Pcode + ", Salesman=" + Salesman + '}';
+        return IdOrder + "-" + Pcode + "-" + Salesman ;
     }
 
    

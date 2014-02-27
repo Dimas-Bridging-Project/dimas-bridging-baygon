@@ -19,6 +19,7 @@ import javax.persistence.*;
 public class JPcode implements Serializable {
  private static final long serialVersionUID = 1L;
     @EmbeddedId
+    @Column(name = "jpcode_pk")    
     protected JPcodePK jpcodePK;    
     @Column(name="qty_in_fib", length = 17)
     private String QtyInFib;

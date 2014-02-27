@@ -18,6 +18,7 @@ import javax.persistence.*;
 @Table(name="jtpru")
 public class JTpru implements Serializable {
     @EmbeddedId
+    @Column(name = "jtpruPK")
     protected JTpruPK jtpruPK;
     
     @Column(name="harga_no_ppn")

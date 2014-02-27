@@ -47,7 +47,11 @@ public class JPcodePK implements Serializable {
     public void setSalesman(String Salesman) {
         this.Salesman = Salesman;
     }
-
+    
+    @Override
+    public String toString() {
+        return IdOrder + "-" + Pcode + "-" + Salesman;
+    }
     @Override
     public int hashCode() {
         int hash = 7;

@@ -21,7 +21,8 @@ public class TblSalesIdPK implements Serializable {
     private String InvoiceNumber;
     @Column(name="distributor_product_code", length=20 , nullable=false)
     private String DistributorProductCode;
-
+   
+   
     public String getInvoiceNumber() {
         return InvoiceNumber;
     }

@@ -18,8 +18,8 @@ import javax.persistence.*;
 @Table(name="jtprb")
 public class JTprb implements Serializable {
     @EmbeddedId
+    @Column(name = "jtprbPK")
     protected JTprbPK jtprbPK;
-    
     @Column(name="qty_in_fib", length = 17)
     private String QtyInFib;
     @Column(name="qty_in_sat")
